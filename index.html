@@ -140,7 +140,7 @@
 
 
 <div class="topline"><div class="page in">
-  <span>v1.2 · installable today</span>
+  <span>v1.6 · installable today</span>
   <span>Est. 2026</span>
   <span>Tools, never signals · not investment advice</span>
 </div></div>
@@ -173,7 +173,7 @@
       <div class="cols">
         <p class="dropcap">Every trading session has the same shape. The same charts in the same places, the same execution platform, the same research, at the same times, every day. Alpharch treats that shape as the operating system's job. By 7:30 each morning it has already written your desk sheet, with the overnight session, the key levels, the dealer positioning map and your plan drawn from your own playbook. At 8:00, one keypress raises the entire desk: footprints on the first screen, execution on the second, research on the third. When the bell rings you are reading the market, not arranging windows.</p>
         <p>And it is a declaration as much as a product. Trading software is the last corner of finance still locked to closed, rented, Windows-only platforms — while the exchanges themselves run Linux. Alpharch is built as a fork of Omarchy, the most consequential Linux desktop project in years, designed in the open, blueprint first, because we think the trader’s desk should belong to the trader. The install command below is honest about its status: the desk you see on this page exists as a complete working specification, now being built.</p>
-        <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Live today · installs on stock Omarchy in about two minutes · <a href="/start.html">read the manual</a></span></p>
+        <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Live today · no account, no sign-up · <a href="/start.html">read the manual</a></span></p>
       </div>
     </div>
     <div>
@@ -192,7 +192,8 @@
   <div class="sechead"><span class="num">II.</span><span class="name">The flagship</span></div>
   <h2>It has read <span style="color: var(--amber)">every tick.</span><br><em>Ask it anything.</em></h2>
   <p class="standfirst">No one can watch the footprint, the order book, the options tape and the internals at once. The Narrator can, and does, all session long.</p>
-  <p>It sits on the same data streams as every chart on the desk: each print, each iceberg, each pulled bid, each sweep and block, the live gamma map, the internals, your marked levels, and your own playbook file. When you ask, it answers out loud, in seconds, in your vocabulary. Your hands never leave the ladder. No charting platform offers this. No retail terminal offers this. <strong style="color: #f6f0dd">It boots with the operating system.</strong></p>
+  <p><em>The Narrator at 1.0, as designed:</em> it sits on the same data streams as every chart on the desk: each print, each iceberg, each pulled bid, each sweep and block, the live gamma map, the internals, your marked levels, and your own playbook file. When you ask, it answers out loud, in seconds, in your vocabulary. Your hands never leave the ladder. No charting platform offers this. No retail terminal offers this. <strong style="color: #f6f0dd">It boots with the operating system.</strong></p>
+  <p><em>Shipped today, free during beta (v1.6):</em> <code style="font-family:var(--mono);font-size:15px">trade-brain debrief</code> reads your journal, your recorded tape and your calendar at the bell and writes the debrief back into your journal; <code style="font-family:var(--mono);font-size:15px">ask</code> answers questions over your own record; <code style="font-family:var(--mono);font-size:15px">replay</code> narrates any recorded session; <code style="font-family:var(--mono);font-size:15px">do</code> drives the running charts in plain words — &ldquo;heatmap, grid 25, vwap on&rdquo; — and the windows obey. It cites only numbers the engine computed, refuses every request for a pick or a forecast — a published test suite proves it — and signs every answer the same way: <em>"Your record, read back to you. Never advice."</em> Voice, the live gamma map and the internals are the road from here to the transcript below.</p>
 
   <div class="duo">
   <div class="transcript">
@@ -247,6 +248,7 @@
 <section>
   <div class="sechead"><span class="num">IV.</span><span class="name">The machinery</span></div>
   <h2><span class="hl">Futures first.</span> <em>Flow underneath everything.</em></h2>
+  <p class="standfirst">Live today: the crypto desk — spot order flow, perp depth with hourly funding and open interest via Hyperliquid, and Deribit options — all real exchange data, no keys. CME depth lights up the same engine when you bring your feed (Rithmic, Databento, or a broker entitlement). The four commitments below are the futures road, stated as intent:</p>
   <div class="cols">
     <p><span class="leadin">The market, two keystrokes away.</span>A switcher opens on the futures catalog grouped by exchange: CME equity index, CBOT rates and grains, NYMEX energy, COMEX metals. Front months resolve automatically, days-to-roll sit beside every contract, and micros are one keystroke from their full-size siblings.</p>
     <p><span class="leadin">Order flow as the default view.</span>Footprints, cumulative delta and volume profile form the standard chart workspace, through MotiveWave running natively or Sierra Chart under a tested compatibility layer. The system also watches the tape itself: large-lot prints, icebergs, pulled liquidity, absorption, and delta divergence, raised as alerts tied to your marked levels.</p>
@@ -321,6 +323,7 @@
         <div class="row"><span>Base system</span><span>Arch Linux · Hyprland</span></div>
         <div class="row"><span>Upstream</span><span>Omarchy (friendly fork)</span></div>
         <div class="row"><span>Install</span><span>One command · ≈ 2 min</span></div>
+        <div class="row"><span>Accounts</span><span>None — nothing to log into</span></div>
         <div class="row"><span>Upstream backing</span><span>$8M foundation</span></div>
         <div class="row"><span>AI integration</span><span>Native, fenced</span></div>
         <div class="row"><span>License &amp; build</span><span>Open, forkable</span></div>
@@ -336,8 +339,8 @@
   <ol class="clauses">
     <li><b>On latency:</b> retail order flow travels hundreds of milliseconds to a broker, and no kernel patch changes that. What ships instead is what matters at that distance: truthful clocks, a machine that never sleeps mid-session, and a power-failure plan.</li>
     <li><b>On Windows-only platforms:</b> some trading software will simply never run on Linux. IBKR runs natively here, TradingView runs accelerated, and Sierra Chart runs well under a tested compatibility layer — but Quantower, NinjaTrader and their class stay on Windows, and we say so here rather than in a footnote.</li>
-    <li><b>On data:</b> real depth and live options flow are paid feeds, and the free tier is honest about being an approximation rather than dressing it up.</li>
-    <li><b>On tilt:</b> the profit-and-loss readout ships disabled. Watching unrealized P&amp;L all day is how accounts die; turning it on is a decision, not a default.</li>
+    <li><b>On data:</b> everything live today is real exchange data — spot flow and book, perp depth, options — never delayed data dressed as live, never a number the feed didn't provide. CME depth and OPRA options flow are paid feeds; until you plug yours in, those views stay dark and say so plainly.</li>
+    <li><b>On tilt:</b> when broker adapters land, the profit-and-loss readout will ship disabled. Watching unrealized P&amp;L all day is how accounts die; turning it on is a decision, not a default.</li>
     <li><b>On the assistant:</b> it analyzes everything and advises on nothing. No orders, no signals, no exceptions, by architecture rather than by policy.</li>
   </ol>
 </section>
