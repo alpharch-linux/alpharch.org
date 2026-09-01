@@ -140,7 +140,7 @@
 
 
 <div class="topline"><div class="page in">
-  <span>In open development</span>
+  <span>v1.2 · installable today</span>
   <span>Est. 2026</span>
   <span>Tools, never signals · not investment advice</span>
 </div></div>
@@ -173,7 +173,7 @@
       <div class="cols">
         <p class="dropcap">Every trading session has the same shape. The same charts in the same places, the same execution platform, the same research, at the same times, every day. Alpharch treats that shape as the operating system's job. By 7:30 each morning it has already written your desk sheet, with the overnight session, the key levels, the dealer positioning map and your plan drawn from your own playbook. At 8:00, one keypress raises the entire desk: footprints on the first screen, execution on the second, research on the third. When the bell rings you are reading the market, not arranging windows.</p>
         <p>And it is a declaration as much as a product. Trading software is the last corner of finance still locked to closed, rented, Windows-only platforms — while the exchanges themselves run Linux. Alpharch is built as a fork of Omarchy, the most consequential Linux desktop project in years, designed in the open, blueprint first, because we think the trader’s desk should belong to the trader. The install command below is honest about its status: the desk you see on this page exists as a complete working specification, now being built.</p>
-        <p><span class="listing"><span class="p">❯</span> trade-desk open<span class="cursor"></span></span><br><span class="smallnote">In blueprint · follow the build · ISO at phase three</span></p>
+        <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Live today · overlay v1.2 · installs on stock Omarchy in about two minutes</span></p>
       </div>
     </div>
     <div>
@@ -320,7 +320,7 @@
       <div class="facts">
         <div class="row"><span>Base system</span><span>Arch Linux · Hyprland</span></div>
         <div class="row"><span>Upstream</span><span>Omarchy (friendly fork)</span></div>
-        <div class="row"><span>Install</span><span>≈ 20 minutes</span></div>
+        <div class="row"><span>Install</span><span>One command · ≈ 2 min</span></div>
         <div class="row"><span>Upstream backing</span><span>$8M foundation</span></div>
         <div class="row"><span>AI integration</span><span>Native, fenced</span></div>
         <div class="row"><span>License &amp; build</span><span>Open, forkable</span></div>
@@ -345,8 +345,14 @@
 <section>
   <div class="sechead"><span class="num">VIII.</span><span class="name">Follow the build</span></div>
   <h2>Trade the open, <em>not the <span class="hl">setup.</span></em></h2>
-  <p class="standfirst">Alpharch is being built in public, specification first. The overlay lands on stock Omarchy this fall; the installable system follows when it has earned it. If you believe the trading desk should belong to the trader — not to a license server — follow the build, and bring your playbook.</p>
-  <p><span class="listing"><span class="p">❯</span> git clone [repository — phase four]<span class="cursor"></span></span><br><span class="smallnote">The address will live here when there is something worth cloning</span></p>
+  <p class="standfirst">The overlay is live. Order flow in six views, crypto options flow, the flow canvas, the desk, the journal, two shades of The Pit — on stock Omarchy, today, with one command. The installable ISO follows when it has earned it. If you believe the trading desk should belong to the trader — not to a license server — pull up a chair.</p>
+  <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Requires <a href="https://omarchy.org">Omarchy</a> (or any Arch + Hyprland). Fully reversible — uninstall.sh removes every trace and keeps your journal.</span></p>
+  <ol class="clauses">
+    <li><b>Install Omarchy.</b> Download the ISO at <a href="https://omarchy.org">omarchy.org</a> — a clean install runs about 76 seconds.</li>
+    <li><b>Run the line above</b> in any terminal. It clones the overlay, installs the one dependency, wires the keybindings, and puts on The Pit.</li>
+    <li><b>Start reading.</b> <code>alpharch</code> prints the command map · <code>alpharch doctor</code> checks every feed from your machine · SUPER+ALT+O opens live order flow · SUPER+ALT+A is The Line.</li>
+  </ol>
+  <p><span class="smallnote">Prefer to read it first? <a href="https://github.com/alpharch-linux/alpharch">github.com/alpharch-linux/alpharch</a> — MIT, every line inspectable, which is the point.</span></p>
 </section>
 </div>
 
