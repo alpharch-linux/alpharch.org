@@ -103,7 +103,7 @@
 <header class="mast">
   <div class="page mastrow">
     <div class="brand"><a href="/">ALPHARCH<span class="dot">.</span></a></div>
-    <div class="mastnote">The Manual · Overlay v1.3 · <a href="/">Front page</a></div>
+    <div class="mastnote">The Manual · Overlay v1.6 · <a href="/">Front page</a></div>
   </div>
 </header>
 
@@ -138,7 +138,7 @@
 <span class="p">❯</span> alpharch doctor            <span class="c"># checks every dependency and data feed</span></span>
 <span class="smallnote">The doctor is honest: green means live from your machine, red says exactly why not.</span></p>
 
-<div class="aside"><b>US traders, one expected red line:</b> Binance is geo-blocked from US addresses, so perp liquidations/funding show unreachable. Coinbase spot flow and Deribit options flow run live and free. Nothing in Alpharch fakes a feed it can't reach.</div>
+<div class="aside"><b>Every feed is live and keyless</b> — spot flow and book (Coinbase), perp depth with hourly funding and open interest (Hyperliquid, US-reachable), and options flow (Deribit). No account anywhere: nothing to sign up for is the point. The doctor tests each feed from your machine and says plainly what's reachable.</div>
 
 <!-- ══════════════════════ II. THE KEYS ══════════════════════ -->
 <div class="sechead"><span class="num">II.</span><span class="name">The keys</span></div>
@@ -152,7 +152,7 @@
   <tr><td class="k"><kbd>SUPER+ALT+O</kbd></td><td>Order flow</td><td>The footprint: volume at price, delta, imbalances, absorption flags. Live.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+E</kbd></td><td>Depth ladder</td><td>The DOM: resting size, walls flagged ⚑, book pressure, session profile.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+H</kbd></td><td>Heatmap</td><td>The order book through time, in the terminal.</td></tr>
-  <tr><td class="k"><kbd>SUPER+ALT+V</kbd></td><td>Flow canvas</td><td>The flagship window: candles meet the liquidity fog at the amber seam. Real pixels.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+V</kbd></td><td>Flow canvas</td><td>The flagship window: candles meet the liquidity fog at the amber seam. Real pixels. Scroll zooms, drag pans, a crosshair reads the tape; double-click snaps back.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+P</kbd></td><td>Options flow</td><td>Live crypto options tape from Deribit — premium, IV, size flags.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+M</kbd></td><td>Markets</td><td>Fuzzy-pick a market — spot, perp, or an options book — and go.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+W</kbd></td><td>Session clock</td><td>Globex, NYSE, London, Tokyo — open or closed, with live countdowns and funding marks.</td></tr>
@@ -161,6 +161,7 @@
   <tr><td class="k"><kbd>SUPER+ALT+N</kbd></td><td>Capture</td><td>Screenshot straight into today's journal entry.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+D</kbd></td><td>Focus</td><td>Do-not-disturb. Mute the world, read the tape. Tap again to release.</td></tr>
   <tr><td class="k"><kbd>SUPER+ALT+I</kbd></td><td>The shade</td><td>Flip the whole OS between The Pit (dark) and the white prospectus.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+Q</kbd></td><td>Desk Brain</td><td>The debrief at the bell — the Narrator reads your journal and your tape, and writes it back. Free during beta.</td></tr>
 </table>
 
 <!-- ══════════════════════ III. THE LINE ══════════════════════ -->
@@ -180,6 +181,7 @@
   <tr><td class="k"><code>desk</code> · <code>markets</code></td><td>The whole desk · the market picker</td></tr>
   <tr><td class="k"><code>jrnl</code> · <code>shot</code> · <code>brief</code> · <code>clock</code></td><td>Journal · capture · The Daily · session clock</td></tr>
   <tr><td class="k"><code>focus</code> · <code>light</code> · <code>dark</code></td><td>Do-not-disturb · prospectus mode · The Pit</td></tr>
+  <tr><td class="k"><code>brain</code> · <code>debrief</code> · <code>ask …</code></td><td>The Desk Brain: the debrief ritual, or a question over your own record</td></tr>
   <tr><td class="k"><code>update</code></td><td>Update Alpharch to the latest release</td></tr>
 </table>
 
@@ -202,8 +204,15 @@
 
 <p>The color contract, everywhere and always: <b style="color:var(--up)">green</b> and <b style="color:var(--down)">red</b> mean direction and <i>only</i> direction. <b style="color:var(--amber-ink)">Amber</b> means attention.</p>
 
-<!-- ══════════════════════ V. EVERY COMMAND ══════════════════════ -->
-<div class="sechead"><span class="num">V.</span><span class="name">Every command</span></div>
+<!-- ══════════════════════ V. THE DESK BRAIN ══════════════════════ -->
+<div class="sechead"><span class="num">V.</span><span class="name">The Desk Brain</span></div>
+<h2>It reads your record. <em>It refuses the future.</em></h2>
+<p>The Narrator is the desk's voice — and it talks only about what already happened, in your own record. <code>trade-brain debrief</code> at the close reads today's journal, the tape you recorded, and your calendar, and writes the debrief back into your journal: what you planned, what you noted, what the tape shows at those minutes. <code>trade-brain ask "…"</code> answers questions over your record. <code>trade-brain replay TAPE</code> narrates a recorded session — the flush, the absorption, the reclaim, timestamped. And the desk itself takes plain words: <code>trade-brain do "set this chart to candlesticks with a 40 range with VWAP and cumulative delta set"</code> and the running window obeys — view, tick, bars, indicators. The model can only emit whitelisted parameters, never code, and advice through <code>do</code> is refused like everywhere else.</p>
+<p>Three properties make it trustworthy. It cites only numbers the engine computed — every price and volume it mentions comes from <code>alphad --analyze</code>, deterministic math over your tape; if a number isn't in the record, it says so instead of guessing. It refuses every request for a pick, a forecast, an entry, or a size — however phrased — and the repo ships an adversarial test suite proving it. And it runs through <em>your own</em> locally installed Claude: no Alpharch server, no account, nothing sent anywhere that wasn't already on your disk. Every answer ends the same way: <em>"Your record, read back to you. Never advice."</em></p>
+<p><b>Free during beta.</b> The personal assistant becomes a paid service at 1.0; the voice — market literacy, The Daily, questions over the current session — stays free forever. The free tier is never degraded to upsell. Requires the <code>claude</code> CLI (Omarchy ships AI-native); <code>trade-brain check</code> tells you if you're set.</p>
+
+<!-- ══════════════════════ VI. EVERY COMMAND ══════════════════════ -->
+<div class="sechead"><span class="num">VI.</span><span class="name">Every command</span></div>
 <h2>The full toolbox, <em>by name.</em></h2>
 <p>Everything the keys do also runs by name in any terminal — which is how you use Alpharch over SSH, in scripts, or on a machine without Hyprland.</p>
 
@@ -212,9 +221,11 @@
   <tr><td class="k"><code>alpharch</code></td><td>The front door — the mark and the full command map. Checks once a day whether an update exists.</td></tr>
   <tr><td class="k"><code>alpharch doctor</code></td><td>Tests every dependency and every data feed from your machine, with the exact fix for anything missing.</td></tr>
   <tr><td class="k"><code>alpharch update</code></td><td>Pulls the latest release and reinstalls. The only update command you'll ever need.</td></tr>
-  <tr><td class="k"><code>alphad</code></td><td>The flow engine. Flags: <code>--symbol BTC-USD</code> · <code>--exchange coinbase|binance</code> · <code>--market spot|perp</code> · <code>--view flow|dom|heat|tape|profile|liqs</code> · <code>--tick N</code> price grid · <code>--canvas</code> the flagship window.</td></tr>
+  <tr><td class="k"><code>alphad</code></td><td>The flow engine. Flags: <code>--symbol BTC-USD</code> · <code>--exchange coinbase|hyperliquid|binance</code> · <code>--market spot|perp</code> · <code>--view flow|dom|heat|tape|profile|liqs</code> · <code>--tick N</code> price grid · <code>--canvas</code> the flagship window. In the terminal views, <code>?</code> shows the keys.</td></tr>
+  <tr><td class="k"><code>alphad --analyze F</code></td><td>Deterministic facts from a recorded tape — range, POC, value area, CVD path, big prints, absorptions, walls — as JSON. What grounds the Brain.</td></tr>
   <tr><td class="k"><code>alphad --record F</code></td><td>Record the session to a plain JSONL tape while you watch.</td></tr>
   <tr><td class="k"><code>alphad --replay F --speed 4</code></td><td>Replay a recorded tape through the same engine, at any speed. Drill your reads on a Sunday.</td></tr>
+  <tr><td class="k"><code>trade-brain</code></td><td><code>debrief</code> writes the close-of-day debrief into your journal · <code>ask "…"</code> answers over your record · <code>replay TAPE</code> narrates a recorded session · <code>do "…"</code> drives the running charts in plain words · <code>check</code> verifies your setup. Free during beta.</td></tr>
   <tr><td class="k"><code>alphaopt</code></td><td>Options flow (Deribit, free). <code>--currency BTC|ETH</code> · <code>--view tape|map|summary</code>. Keys inside: <kbd>t</kbd> <kbd>m</kbd> <kbd>s</kbd>.</td></tr>
   <tr><td class="k"><code>trade-desk</code></td><td><code>open</code> raises the six rooms across your monitors · <code>close</code> ends the day by opening the journal · <code>status</code> shows the layout. Rooms live in <code>~/.config/alpharch/desk.toml</code>.</td></tr>
   <tr><td class="k"><code>trade-line</code></td><td>The Line, from a terminal.</td></tr>
@@ -227,8 +238,8 @@
   <tr><td class="k"><code>alpharch-waybar setup</code></td><td>Prints the snippet for the optional bar ticker — live price, direction arrow, focus indicator.</td></tr>
 </table>
 
-<!-- ══════════════════════ VI. YOUR FILES ══════════════════════ -->
-<div class="sechead"><span class="num">VI.</span><span class="name">Your files</span></div>
+<!-- ══════════════════════ VII. YOUR FILES ══════════════════════ -->
+<div class="sechead"><span class="num">VII.</span><span class="name">Your files</span></div>
 <h2>Plain text. <em>Yours.</em></h2>
 <p>Alpharch's whole configuration is three small files you can open in any editor. The installer seeds them once and never overwrites them.</p>
 
@@ -240,8 +251,8 @@
   <tr><td class="k"><code>~/Documents/trading-journal/</code></td><td>Your journal — one Markdown file per day, screenshots alongside. Never uploaded, never touched by uninstall.</td></tr>
 </table>
 
-<!-- ══════════════════════ VII. WHEN SOMETHING LOOKS WRONG ══════════════════════ -->
-<div class="sechead"><span class="num">VII.</span><span class="name">When something looks wrong</span></div>
+<!-- ══════════════════════ VIII. WHEN SOMETHING LOOKS WRONG ══════════════════════ -->
+<div class="sechead"><span class="num">VIII.</span><span class="name">When something looks wrong</span></div>
 <h2>Read this <em>before you worry.</em></h2>
 
 <ol class="clauses">
@@ -250,7 +261,8 @@
   <li><b>"Everything opens fullscreen!"</b> It doesn't — that's tiling. One window on a workspace correctly fills it, because there's nothing to share the space with. Open a second window on the same workspace and watch them split. (A window that's genuinely stuck full-width was toggled with Omarchy's <kbd>SUPER+ALT+F</kbd> — press it again.)</li>
   <li><b>The footprint looks sparse.</b> It builds from live trades and needs a few minutes of tape. The canvas (<kbd>SUPER+ALT+V</kbd>) is the better first look at a fresh session.</li>
   <li><b>Everything is the wrong colors.</b> Alpharch wears your active Omarchy theme. For the house look: <code>omarchy-theme-set pit</code>.</li>
-  <li><b>A feed shows unreachable.</b> Run <code>alpharch doctor</code> — it tests each feed from your machine and says exactly what's up. Binance from a US address is expected to fail; Coinbase and Deribit carry the live free tier.</li>
+  <li><b>A feed shows unreachable.</b> Run <code>alpharch doctor</code> — it tests each feed from your machine and says exactly what's up. The live free tier is Coinbase (spot), Hyperliquid (perps), and Deribit (options); Binance remains available outside the US.</li>
+  <li><b>The Brain says it can't find Claude.</b> The Narrator speaks through your own locally installed <code>claude</code> CLI. <code>trade-brain check</code> diagnoses it; Omarchy's AI setup provides it.</li>
   <li><b>Anything else.</b> <code>alpharch update</code> brings the newest fixes. Issues and code: <a href="https://github.com/alpharch-linux/alpharch">github.com/alpharch-linux/alpharch</a>.</li>
 </ol>
 
@@ -258,8 +270,8 @@
 <p><span class="listing"><span class="p">❯</span> ~/.local/share/alpharch/uninstall.sh</span></p>
 <p>Removes every trace — keys, commands, themes, branding restored — and keeps your journal and config, because they were never ours.</p>
 
-<!-- ══════════════════════ VIII. THE RULES ══════════════════════ -->
-<div class="sechead"><span class="num">VIII.</span><span class="name">The rules of the house</span></div>
+<!-- ══════════════════════ IX. THE RULES ══════════════════════ -->
+<div class="sechead"><span class="num">IX.</span><span class="name">The rules of the house</span></div>
 <h2>What this will <em>never do.</em></h2>
 <ol class="clauses">
   <li><b>No signals, no picks, no AI that trades.</b> These are tools for reading markets. The reading is yours.</li>
