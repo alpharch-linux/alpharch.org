@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Manual — Alpharch</title>
+<meta name="description" content="Install Alpharch and run the whole desk. Every key, every command, laid out plainly.">
+<link rel="icon" href="alpharch-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,700&family=Libre+Franklin:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f2e9; --paper-2: #ede9db; --ink: #191610; --ink-band: #16130c;
+    --ink-soft: #4a4436; --faint: #857d6a; --rule: #cdc5b0;
+    --up: #1d6f47; --down: #a83a30; --amber: #e8a33d; --amber-ink: #9a6b14;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Libre Franklin", "Franklin Gothic Medium", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif);
+         font-size: 19px; line-height: 1.55; }
+  .page { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+  a { color: var(--amber-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  header.mast { border-bottom: 3px solid var(--ink); padding: 34px 0 20px; }
+  .mastrow { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .brand { font-family: var(--serif); font-weight: 800; font-size: 34px; letter-spacing: -0.01em; }
+  .brand a { color: var(--ink); text-decoration: none; }
+  .brand .dot { color: var(--amber-ink); }
+  .mastnote { font-family: var(--sans); font-size: 12px; letter-spacing: .14em;
+              text-transform: uppercase; color: var(--faint); }
+
+  h1.doctitle { font-weight: 800; font-size: clamp(42px, 7vw, 72px); line-height: 1.03;
+                margin: 34px 0 14px; letter-spacing: -0.015em; }
+  h1 .hl { background: linear-gradient(transparent 58%, rgba(232,163,61,.55) 58%); }
+  .standfirst { font-size: 22px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 8px; }
+
+  .sechead { display: flex; align-items: baseline; gap: 14px; border-top: 3px solid var(--ink);
+             padding-top: 14px; margin: 64px 0 6px; }
+  .sechead .num { font-family: var(--serif); font-style: italic; font-weight: 700;
+                  font-size: 26px; color: var(--amber-ink); }
+  .sechead .name { font-family: var(--sans); font-weight: 700; font-size: 13px;
+                   letter-spacing: .16em; text-transform: uppercase; }
+  h2 { font-weight: 800; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.1; margin: 10px 0 18px;
+       letter-spacing: -0.01em; }
+  h2 em { font-style: italic; font-weight: 700; }
+
+  .listing { display: block; font-family: var(--mono); font-size: 15.5px; background: var(--ink-band);
+             color: #e7e0cf; padding: 15px 18px; border-radius: 3px; overflow-x: auto;
+             white-space: pre; line-height: 1.6; }
+  .listing .p { color: var(--amber); }
+  .listing .c { color: #857d6a; }
+  .smallnote { font-family: var(--sans); font-size: 12.5px; letter-spacing: .06em;
+               text-transform: uppercase; color: var(--faint); display: block; margin-top: 8px; }
+
+  ol.steps { counter-reset: step; list-style: none; padding: 0; margin: 22px 0; }
+  ol.steps > li { counter-increment: step; padding: 20px 0 22px 66px; position: relative;
+                  border-top: 1px solid var(--rule); }
+  ol.steps > li::before { content: counter(step); position: absolute; left: 0; top: 16px;
+                          font-family: var(--serif); font-weight: 800; font-size: 32px;
+                          color: var(--amber-ink); width: 46px; text-align: center; }
+  ol.steps b.t { font-family: var(--sans); font-weight: 700; font-size: 17px; display: block; margin-bottom: 6px; }
+  ol.steps p { margin: 8px 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 17px; }
+  th { font-family: var(--sans); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+       color: var(--faint); text-align: left; padding: 8px 14px 8px 0; border-bottom: 2px solid var(--ink); }
+  td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td.k { white-space: nowrap; }
+  kbd { font-family: var(--mono); font-size: 13.5px; background: var(--paper-2);
+        border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 4px;
+        padding: 2px 7px; white-space: nowrap; }
+  code { font-family: var(--mono); font-size: 15px; background: var(--paper-2);
+         padding: 1px 6px; border-radius: 3px; }
+  td code { white-space: nowrap; }
+
+  .aside { border-left: 4px solid var(--amber); background: var(--paper-2);
+           padding: 14px 20px; margin: 24px 0; font-size: 17.5px; }
+  .aside b { font-family: var(--sans); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+
+  ol.clauses { list-style: none; counter-reset: cl; padding: 0; margin: 18px 0; }
+  ol.clauses li { counter-increment: cl; padding: 12px 0 12px 40px; position: relative;
+                  border-top: 1px solid var(--rule); }
+  ol.clauses li::before { content: counter(cl) "."; position: absolute; left: 4px;
+                          font-family: var(--serif); font-style: italic; font-weight: 700;
+                          color: var(--amber-ink); }
+
+  .band-ink { background: var(--ink-band); color: #e7e0cf; margin-top: 84px; }
+  .band-ink .page { padding-top: 70px; padding-bottom: 78px; text-align: center; }
+  .band-ink .big { font-family: var(--serif); font-weight: 800;
+                   font-size: clamp(34px, 5.6vw, 62px); line-height: 1.05; color: #f6f0dd;
+                   letter-spacing: -0.015em; }
+  .band-ink .big span { color: var(--amber); }
+  .band-ink .foot { font-family: var(--sans); font-size: 12px; letter-spacing: .16em;
+                    text-transform: uppercase; color: #857d6a; margin-top: 26px; }
+  .band-ink a { color: var(--amber); }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="page mastrow">
+    <div class="brand"><a href="/">ALPHARCH<span class="dot">.</span></a></div>
+    <div class="mastnote">The Manual · Overlay v1.3 · <a href="/">Front page</a></div>
+  </div>
+</header>
+
+<div class="page">
+
+<h1 class="doctitle">Everything, <span class="hl">laid out.</span></h1>
+<p class="standfirst">If you can paste one line, you can run the whole desk. This page assumes nothing — not even that you've used Linux before.</p>
+
+<!-- ══════════════════════ I. INSTALL ══════════════════════ -->
+<div class="sechead"><span class="num">I.</span><span class="name">Install</span></div>
+<h2>Three steps. <em>About five minutes.</em></h2>
+
+<ol class="steps">
+  <li>
+    <b class="t">Install Omarchy.</b>
+    <p>Alpharch is an overlay: it sits on top of <a href="https://omarchy.org">Omarchy</a>, the Arch Linux system it's built for. Download Omarchy's ISO, put it on a USB stick, boot from it, and follow their installer — a clean install runs in about 76 seconds, and their site walks every click. When you land on the desktop, come back here.</p>
+  </li>
+  <li>
+    <b class="t">Open a terminal.</b>
+    <p>Hold <kbd>SUPER</kbd> and press <kbd>RETURN</kbd>. (<b>SUPER</b> is the key with the logo on it — the "Windows key". You'll use it constantly; on Omarchy it drives everything.) A black window with a blinking cursor appears. That's the terminal. You type commands into it and press Enter.</p>
+  </li>
+  <li>
+    <b class="t">Paste this line and press Enter.</b>
+    <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash</span></p>
+    <p>It fetches Alpharch, installs it, and wires everything up. If it asks for your password (for one small package), type it — nothing appears as you type; that's normal — and press Enter.</p>
+    <p><b>What success looks like:</b> an amber Alpharch logo, a series of green ✓ lines, then <i>"Done. Start here:"</i>. If any command afterwards says <i>not found</i>, close the terminal and open a new one — that refreshes its path.</p>
+  </li>
+</ol>
+
+<p>Two finishing touches, typed into the same terminal:</p>
+<p><span class="listing"><span class="p">❯</span> omarchy-theme-set pit      <span class="c"># put on The Pit — the house look</span>
+<span class="p">❯</span> alpharch doctor            <span class="c"># checks every dependency and data feed</span></span>
+<span class="smallnote">The doctor is honest: green means live from your machine, red says exactly why not.</span></p>
+
+<div class="aside"><b>US traders, one expected red line:</b> Binance is geo-blocked from US addresses, so perp liquidations/funding show unreachable. Coinbase spot flow and Deribit options flow run live and free. Nothing in Alpharch fakes a feed it can't reach.</div>
+
+<!-- ══════════════════════ II. THE KEYS ══════════════════════ -->
+<div class="sechead"><span class="num">II.</span><span class="name">The keys</span></div>
+<h2><em>SUPER + ALT</em> is the trading layer.</h2>
+<p>Hold <kbd>SUPER</kbd> and <kbd>ALT</kbd> together, tap one letter. Every Omarchy key you already know is untouched — Alpharch only adds.</p>
+
+<table>
+  <tr><th>Keys</th><th>Opens</th><th>What it is</th></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+A</kbd></td><td>The Line</td><td>The command bar. Type where you want to go — <code>btc heat</code>, <code>opt map</code>, <code>jrnl</code> — press Enter, you're there.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+T</kbd></td><td>The desk</td><td>Six rooms — flow, DOM, heatmap, options, clock, scratch — raised across all your monitors at once.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+O</kbd></td><td>Order flow</td><td>The footprint: volume at price, delta, imbalances, absorption flags. Live.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+E</kbd></td><td>Depth ladder</td><td>The DOM: resting size, walls flagged ⚑, book pressure, session profile.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+H</kbd></td><td>Heatmap</td><td>The order book through time, in the terminal.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+V</kbd></td><td>Flow canvas</td><td>The flagship window: candles meet the liquidity fog at the amber seam. Real pixels.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+P</kbd></td><td>Options flow</td><td>Live crypto options tape from Deribit — premium, IV, size flags.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+M</kbd></td><td>Markets</td><td>Fuzzy-pick a market — spot, perp, or an options book — and go.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+W</kbd></td><td>Session clock</td><td>Globex, NYSE, London, Tokyo — open or closed, with live countdowns and funding marks.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+B</kbd></td><td>The Daily</td><td>Morning sheet: watchlist, session countdowns, yesterday's debrief, your calendar.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+J</kbd></td><td>Journal</td><td>Today's entry — plan, notes, trades, debrief. Plain Markdown, on your disk, yours.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+N</kbd></td><td>Capture</td><td>Screenshot straight into today's journal entry.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+D</kbd></td><td>Focus</td><td>Do-not-disturb. Mute the world, read the tape. Tap again to release.</td></tr>
+  <tr><td class="k"><kbd>SUPER+ALT+I</kbd></td><td>The shade</td><td>Flip the whole OS between The Pit (dark) and the white prospectus.</td></tr>
+</table>
+
+<!-- ══════════════════════ III. THE LINE ══════════════════════ -->
+<div class="sechead"><span class="num">III.</span><span class="name">The Line</span></div>
+<h2>Type where you <em>want to go.</em></h2>
+<p>Bloomberg taught the world that a terminal is driven, not clicked. <kbd>SUPER+ALT+A</kbd> opens Alpharch's command bar; type a phrase, press Enter. The grammar is <i>market, then function</i> — or just a function word:</p>
+
+<table>
+  <tr><th>You type</th><th>You get</th></tr>
+  <tr><td class="k"><code>btc</code></td><td>Order flow on Bitcoin</td></tr>
+  <tr><td class="k"><code>btc heat</code> · <code>btc dom</code> · <code>btc profile</code></td><td>Heatmap · depth ladder · volume profile on Bitcoin</td></tr>
+  <tr><td class="k"><code>btc canvas</code></td><td>The flow canvas</td></tr>
+  <tr><td class="k"><code>btc perp</code></td><td>Perp flow: liquidations, funding, open interest</td></tr>
+  <tr><td class="k"><code>eth</code> · <code>sol</code></td><td>Same, other coins</td></tr>
+  <tr><td class="k"><code>opt</code> · <code>opt map</code> · <code>opt sum</code></td><td>Options tape · OI map with max pain · put/call summary</td></tr>
+  <tr><td class="k"><code>eth opt</code></td><td>ETH options tape</td></tr>
+  <tr><td class="k"><code>desk</code> · <code>markets</code></td><td>The whole desk · the market picker</td></tr>
+  <tr><td class="k"><code>jrnl</code> · <code>shot</code> · <code>brief</code> · <code>clock</code></td><td>Journal · capture · The Daily · session clock</td></tr>
+  <tr><td class="k"><code>focus</code> · <code>light</code> · <code>dark</code></td><td>Do-not-disturb · prospectus mode · The Pit</td></tr>
+  <tr><td class="k"><code>update</code></td><td>Update Alpharch to the latest release</td></tr>
+</table>
+
+<!-- ══════════════════════ IV. INSIDE A VIEW ══════════════════════ -->
+<div class="sechead"><span class="num">IV.</span><span class="name">Inside a view</span></div>
+<h2>One key <em>switches the lens.</em></h2>
+<p>Every order-flow window is the same engine wearing six lenses. While one is open, tap a single letter — no menus, no restart, the data stays hot:</p>
+
+<table>
+  <tr><th>Key</th><th>View</th><th>What you're reading</th></tr>
+  <tr><td class="k"><kbd>f</kbd></td><td>flow</td><td>Footprint — volume at price per minute, bid×ask split, delta, 3:1 imbalances tinted, absorption flagged ◆</td></tr>
+  <tr><td class="k"><kbd>d</kbd></td><td>dom</td><td>Depth ladder — resting size, walls ⚑ at 3× median, book pressure, spread</td></tr>
+  <tr><td class="k"><kbd>h</kbd></td><td>heat</td><td>Liquidity through time — fog fades with size, true walls burn white-hot</td></tr>
+  <tr><td class="k"><kbd>t</kbd></td><td>tape</td><td>Time &amp; sales — speed meter, prints sized by volume, big prints at 8× mean flagged</td></tr>
+  <tr><td class="k"><kbd>p</kbd></td><td>profile</td><td>Session volume profile — POC, 70% value area, delta per level</td></tr>
+  <tr><td class="k"><kbd>l</kbd></td><td>liqs</td><td>Liquidations, funding countdown, open interest (perp feeds)</td></tr>
+  <tr><td class="k"><kbd>+</kbd> / <kbd>-</kbd></td><td colspan="2">Coarser / finer price grid, live</td></tr>
+  <tr><td class="k"><kbd>q</kbd></td><td colspan="2">Quit the window</td></tr>
+</table>
+
+<p>The color contract, everywhere and always: <b style="color:var(--up)">green</b> and <b style="color:var(--down)">red</b> mean direction and <i>only</i> direction. <b style="color:var(--amber-ink)">Amber</b> means attention.</p>
+
+<!-- ══════════════════════ V. EVERY COMMAND ══════════════════════ -->
+<div class="sechead"><span class="num">V.</span><span class="name">Every command</span></div>
+<h2>The full toolbox, <em>by name.</em></h2>
+<p>Everything the keys do also runs by name in any terminal — which is how you use Alpharch over SSH, in scripts, or on a machine without Hyprland.</p>
+
+<table>
+  <tr><th>Command</th><th>Does</th></tr>
+  <tr><td class="k"><code>alpharch</code></td><td>The front door — the mark and the full command map. Checks once a day whether an update exists.</td></tr>
+  <tr><td class="k"><code>alpharch doctor</code></td><td>Tests every dependency and every data feed from your machine, with the exact fix for anything missing.</td></tr>
+  <tr><td class="k"><code>alpharch update</code></td><td>Pulls the latest release and reinstalls. The only update command you'll ever need.</td></tr>
+  <tr><td class="k"><code>alphad</code></td><td>The flow engine. Flags: <code>--symbol BTC-USD</code> · <code>--exchange coinbase|binance</code> · <code>--market spot|perp</code> · <code>--view flow|dom|heat|tape|profile|liqs</code> · <code>--tick N</code> price grid · <code>--canvas</code> the flagship window.</td></tr>
+  <tr><td class="k"><code>alphad --record F</code></td><td>Record the session to a plain JSONL tape while you watch.</td></tr>
+  <tr><td class="k"><code>alphad --replay F --speed 4</code></td><td>Replay a recorded tape through the same engine, at any speed. Drill your reads on a Sunday.</td></tr>
+  <tr><td class="k"><code>alphaopt</code></td><td>Options flow (Deribit, free). <code>--currency BTC|ETH</code> · <code>--view tape|map|summary</code>. Keys inside: <kbd>t</kbd> <kbd>m</kbd> <kbd>s</kbd>.</td></tr>
+  <tr><td class="k"><code>trade-desk</code></td><td><code>open</code> raises the six rooms across your monitors · <code>close</code> ends the day by opening the journal · <code>status</code> shows the layout. Rooms live in <code>~/.config/alpharch/desk.toml</code>.</td></tr>
+  <tr><td class="k"><code>trade-line</code></td><td>The Line, from a terminal.</td></tr>
+  <tr><td class="k"><code>trade-symbol</code></td><td>The market picker. <code>trade-symbol ETH-USD</code> jumps straight there and sets your default.</td></tr>
+  <tr><td class="k"><code>trade-journal</code></td><td><code>today</code> opens today's entry · <code>note "..."</code> appends a timestamped line · <code>capture</code> screenshots into today · <code>week</code> replays the last 7 days · <code>ls</code> lists entries.</td></tr>
+  <tr><td class="k"><code>trade-brief</code></td><td>The Daily. <code>--save</code> appends it to today's journal.</td></tr>
+  <tr><td class="k"><code>trade-clock</code></td><td>Session clock, once. <code>--watch</code> keeps it live.</td></tr>
+  <tr><td class="k"><code>trade-focus</code></td><td>Do-not-disturb toggle. Also <code>on</code> · <code>off</code> · <code>status</code>.</td></tr>
+  <tr><td class="k"><code>trade-shade</code></td><td>Flip The Pit ↔ the white prospectus. Also <code>light</code> · <code>dark</code>.</td></tr>
+  <tr><td class="k"><code>alpharch-waybar setup</code></td><td>Prints the snippet for the optional bar ticker — live price, direction arrow, focus indicator.</td></tr>
+</table>
+
+<!-- ══════════════════════ VI. YOUR FILES ══════════════════════ -->
+<div class="sechead"><span class="num">VI.</span><span class="name">Your files</span></div>
+<h2>Plain text. <em>Yours.</em></h2>
+<p>Alpharch's whole configuration is three small files you can open in any editor. The installer seeds them once and never overwrites them.</p>
+
+<table>
+  <tr><th>File</th><th>What lives there</th></tr>
+  <tr><td class="k"><code>~/.config/alpharch/config.toml</code></td><td>Your defaults: <code>exchange</code>, <code>default_symbol</code>, <code>tick</code> (price grid), <code>bucket</code> (footprint minutes), <code>watchlist</code>, <code>waybar_symbol</code>.</td></tr>
+  <tr><td class="k"><code>~/.config/alpharch/calendar.txt</code></td><td>Your events, one per line: <code>Tue 08:30 CPI</code> or <code>2026-09-17 14:00 FOMC</code> or <code>* 09:15 premarket review</code> (the <code>*</code> means every day). The brief and the clock count down to them.</td></tr>
+  <tr><td class="k"><code>~/.config/alpharch/desk.toml</code></td><td>The six rooms — name, command, and an optional <code>monitor&nbsp;=&nbsp;N</code> to pin a room to a screen.</td></tr>
+  <tr><td class="k"><code>~/Documents/trading-journal/</code></td><td>Your journal — one Markdown file per day, screenshots alongside. Never uploaded, never touched by uninstall.</td></tr>
+</table>
+
+<!-- ══════════════════════ VII. WHEN SOMETHING LOOKS WRONG ══════════════════════ -->
+<div class="sechead"><span class="num">VII.</span><span class="name">When something looks wrong</span></div>
+<h2>Read this <em>before you worry.</em></h2>
+
+<ol class="clauses">
+  <li><b>"command not found" right after installing.</b> Open a new terminal (<kbd>SUPER+RETURN</kbd>). The old one hasn't refreshed its path yet.</li>
+  <li><b>The keys don't respond.</b> Run <code>hyprctl reload</code> in a terminal, then try again.</li>
+  <li><b>"Everything opens fullscreen!"</b> It doesn't — that's tiling. One window on a workspace correctly fills it, because there's nothing to share the space with. Open a second window on the same workspace and watch them split. (A window that's genuinely stuck full-width was toggled with Omarchy's <kbd>SUPER+ALT+F</kbd> — press it again.)</li>
+  <li><b>The footprint looks sparse.</b> It builds from live trades and needs a few minutes of tape. The canvas (<kbd>SUPER+ALT+V</kbd>) is the better first look at a fresh session.</li>
+  <li><b>Everything is the wrong colors.</b> Alpharch wears your active Omarchy theme. For the house look: <code>omarchy-theme-set pit</code>.</li>
+  <li><b>A feed shows unreachable.</b> Run <code>alpharch doctor</code> — it tests each feed from your machine and says exactly what's up. Binance from a US address is expected to fail; Coinbase and Deribit carry the live free tier.</li>
+  <li><b>Anything else.</b> <code>alpharch update</code> brings the newest fixes. Issues and code: <a href="https://github.com/alpharch-linux/alpharch">github.com/alpharch-linux/alpharch</a>.</li>
+</ol>
+
+<h2 style="margin-top:54px">Leaving <em>cleanly.</em></h2>
+<p><span class="listing"><span class="p">❯</span> ~/.local/share/alpharch/uninstall.sh</span></p>
+<p>Removes every trace — keys, commands, themes, branding restored — and keeps your journal and config, because they were never ours.</p>
+
+<!-- ══════════════════════ VIII. THE RULES ══════════════════════ -->
+<div class="sechead"><span class="num">VIII.</span><span class="name">The rules of the house</span></div>
+<h2>What this will <em>never do.</em></h2>
+<ol class="clauses">
+  <li><b>No signals, no picks, no AI that trades.</b> These are tools for reading markets. The reading is yours.</li>
+  <li><b>No fake data.</b> Real futures depth (CME) and equity options flow (OPRA) are paid feeds; until you plug one in, Alpharch says so plainly instead of approximating and dressing it up.</li>
+  <li><b>Nothing phones home.</b> Market data comes in; nothing about you goes out. The one network call Alpharch makes for itself is a once-a-day check for updates.</li>
+</ol>
+
+</div><!-- /page -->
+
+<div class="band-ink">
+  <div class="page">
+    <div class="big">Linux is for traders<span>.</span></div>
+    <div class="foot">Tools, never signals · Est. 2026 · <a href="/">alpharch.org</a> · <a href="https://github.com/alpharch-linux/alpharch">source</a></div>
+  </div>
+</div>
+
+</body>
+</html>
