@@ -5,11 +5,13 @@
     "category": "Futures brokers",
     "route": "TWS / IB Gateway",
     "linux": "Native Linux software",
-    "status": "planned",
-    "summary": "IBKR supplies Linux builds of TWS and IB Gateway. An Alpharch connection through the TWS API still needs an adapter and account testing.",
+    "status": "account-test",
+    "summary": "IBKR supplies Linux builds of TWS and IB Gateway. Alpharch’s development desk now includes a read-only futures bridge, contract selection and charts. Offline checks pass; a real gateway, account and CME data connection have not yet been acceptance-tested.",
     "needs": [
       "An IBKR account and its required market-data subscriptions.",
-      "The Linux TWS or IB Gateway application, signed in locally."
+      "The Linux TWS or IB Gateway application, signed in locally.",
+      "The official TWS API Python client installed in the same runtime as Alpharch. This is optional for public crypto tools.",
+      "The development desk with the IBKR bridge. This guide is not a claim that the public installer includes a supported broker connection."
     ],
     "steps": [
       [
@@ -21,12 +23,20 @@
         "In the application’s API settings, enable socket clients, retain read-only access for charting, and note the socket port. Keep access on this computer."
       ],
       [
-        "Confirm your market data",
-        "Check the exact futures contract and exchange in IBKR. Quotes, tick-by-tick subscriptions and market depth have different permissions and limits."
+        "Install the optional official API client",
+        "Use the TWS API download and IBKR’s Python installation instructions linked below. Follow the downloaded version’s dependency requirements. The development desk shows Setup required when the client is missing."
       ],
       [
-        "Connect when the Alpharch adapter is available",
-        "The planned flow selects the local gateway, port and environment. This guide does not mean an IBKR account can connect to the current Alpharch release."
+        "Connect the development desk",
+        "Open Connect, choose Interactive Brokers, and enter the local API port and a unique nonzero client ID. Sign-in stays in TWS or IB Gateway; Alpharch does not ask for your broker password. A port number alone does not verify paper or live account mode."
+      ],
+      [
+        "Choose the exact futures contract",
+        "Search the futures root and exchange, then select the actual expiry and contract returned by IBKR. Alpharch uses the returned contract ID and price increments; it does not automatically pick the first expiry."
+      ],
+      [
+        "Confirm your market data",
+        "Check the exact contract and exchange in IBKR. Quotes, tick-by-tick subscriptions and market depth have different permissions and limits. Keep delayed, frozen or unknown status visible. This development connection requires account acceptance testing before it can be called supported."
       ]
     ],
     "trouble": [
@@ -35,8 +45,16 @@
         "Check that you are signed in, the API is enabled and the socket port matches. A successful socket connection alone does not establish a market-data entitlement."
       ],
       [
-        "A ladder or footprint is missing detail",
-        "Check depth and tick-by-tick permissions and subscription limits. Ordinary watchlist quotes do not establish full-depth or market-by-order coverage."
+        "Cumulative delta or a bid/ask footprint is unavailable",
+        "IBKR’s tick-by-tick Last callback does not provide aggressor side. Alpharch leaves it unknown; it does not invent buy/sell volume from watchlist quotes. Trade volume can still be shown without directional classification."
+      ],
+      [
+        "A ladder is missing detail",
+        "Check depth permissions and subscription limits. The bridge receives positional Level-2 updates, not individual-order MBO data."
+      ],
+      [
+        "What has actually been tested?",
+        "Twenty bridge checks pass against official SDK 10.50.1 in an isolated runtime, including decoded protocol callbacks with networking replaced. Integration checks cover exact contracts, market-rule ticks, unknown aggressor, recording/replay and delayed-depth suppression. No real gateway session, account entitlement, live CME latency or execution test has been performed. The bridge has no order methods."
       ]
     ],
     "sources": [
@@ -47,6 +65,14 @@
       [
         "TWS / Gateway setup",
         "https://www.interactivebrokers.com/campus/trading-lessons/installing-configuring-tws-for-the-api/"
+      ],
+      [
+        "Official TWS API download",
+        "https://interactivebrokers.github.io/"
+      ],
+      [
+        "Official Python client installation",
+        "https://www.interactivebrokers.com/campus/trading-lessons/accessing-the-tws-python-api-source-code/"
       ],
       [
         "Tick-by-tick data limits",
