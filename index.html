@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2218%22%20fill%3D%22%2316130c%22/%3E%3Cg%20transform%3D%22translate%288%206%29%20scale%280.84%29%22%3E%0A%20%20%3Ccircle%20cx%3D%2242%22%20cy%3D%2252%22%20r%3D%2224%22%20fill%3D%22none%22%20stroke%3D%22%23f6f0dd%22%20stroke-width%3D%2214%22/%3E%0A%20%20%3Cpath%20d%3D%22M66%2030%20V54%20Q66%2074%2088%2074%22%20fill%3D%22none%22%20stroke%3D%22%23e8a33d%22%20stroke-width%3D%2214%22/%3E%3C/g%3E%3C/svg%3E%0A">
-<meta name="description" content="Linux is for traders. The exchanges run Linux — now you do. Alpharch is the open-source operating system for the futures trader.">
+<meta name="description" content="Alpharch is an open-source trading overlay for Omarchy Linux. Crypto order flow today; a futures and crypto workstation in development.">
 <title>Alpharch</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,700&family=Libre+Franklin:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -152,10 +152,12 @@
     <path d="M78 34 V56 Q78 74 96 74" fill="none" stroke="#e8a33d" stroke-width="10"/>
   </svg>
   <h1>ALPHARCH<span class="tick">.</span></h1>
-  <div class="sub">A Linux operating system for the futures trader</div>
+  <div class="sub">The trading layer for Omarchy Linux</div>
   <div style="font-family: var(--serif); font-style: italic; font-size: 15px; color: #8f8771; margin-top: 12px">pronounced alpha-arch</div>
 </div></div>
 
+<nav aria-label="Site" style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:16px 24px;font:600 14px var(--sans);background:var(--ink-band);color:#f6f0dd"><a href="/start.html">The manual</a><a href="/connections/">Broker &amp; feed connections</a><a href="https://github.com/alpharch-linux/alpharch">Source code</a></nav>
+<div class="page" style="padding-top:22px;padding-bottom:22px;font:15px/1.6 var(--sans)"><b>Available today:</b> the Omarchy overlay and public crypto tools. <b>In development:</b> the redesigned chart desk and broker connections. The session stories and illustrated plates below describe the product vision. <a href="/connections/">See what each connection supports.</a></div>
 <div class="dbl"></div>
 <div class="tapeline" aria-hidden="true">
   <div class="tape">
@@ -169,11 +171,11 @@
   <div class="spread">
     <div>
       <h2>The desk assembles itself, <em>and it <span class="hl">reads the tape</span> with you.</em></h2>
-      <p class="standfirst">We are building an operating system with one customer in mind: the trader who reads order flow and options flow, and who is tired of spending the best minutes of the morning launching software.</p>
+      <p class="standfirst">We are building a trading workspace with one customer in mind: the trader who reads order flow and options flow, and who is tired of spending the best minutes of the morning launching software.</p>
       <div class="cols">
         <p class="dropcap">Every trading session has the same shape. The same charts in the same places, the same execution platform, the same research, at the same times, every day. Alpharch treats that shape as the operating system's job. By 7:30 each morning it has already written your desk sheet, with the overnight session, the key levels, the dealer positioning map and your plan drawn from your own playbook. At 8:00, one keypress raises the entire desk: footprints on the first screen, execution on the second, research on the third. When the bell rings you are reading the market, not arranging windows.</p>
-        <p>And it is a declaration as much as a product. Trading software is the last corner of finance still locked to closed, rented, Windows-only platforms — while the exchanges themselves run Linux. Alpharch is built as a fork of Omarchy, the most consequential Linux desktop project in years, designed in the open, blueprint first, because we think the trader’s desk should belong to the trader. The install command below is honest about its status: the desk you see on this page exists as a complete working specification, now being built.</p>
-        <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Live today · no account, no sign-up · <a href="/start.html">read the manual</a></span></p>
+        <p>And it is a declaration as much as a product. Trading software is the last corner of finance still locked to closed, rented, Windows-only platforms — while the exchanges themselves run Linux. Alpharch installs as an additive overlay on Omarchy, the most consequential Linux desktop project in years, designed in the open, blueprint first, because we think the trader’s desk should belong to the trader. The install command below is honest about its status: the desk you see on this page exists as a complete working specification, now being built.</p>
+        <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Live today · no account, no sign-up · <a href="/start.html">read the manual</a> · <a href="/connections/">connect your data</a></span></p>
       </div>
     </div>
     <div>
@@ -248,7 +250,7 @@
 <section>
   <div class="sechead"><span class="num">IV.</span><span class="name">The machinery</span></div>
   <h2><span class="hl">Futures first.</span> <em>Flow underneath everything.</em></h2>
-  <p class="standfirst">Live today: the crypto desk — spot order flow, perp depth with hourly funding and open interest via Hyperliquid, and Deribit options — all real exchange data, no keys. CME depth lights up the same engine when you bring your feed (Rithmic, Databento, or a broker entitlement). The four commitments below are the futures road, stated as intent:</p>
+  <p class="standfirst">Live today: the crypto desk — spot order flow, perp depth with hourly funding and open interest via Hyperliquid, and Deribit options — all real exchange data, no keys. Live CME requires both an implemented adapter and the appropriate provider access and exchange subscriptions. Those live futures integrations are not released. <a href="/connections/">Check the connection guides</a> for the current provider-by-provider status. The four commitments below are the futures road, stated as intent:</p>
   <div class="cols">
     <p><span class="leadin">The market, two keystrokes away.</span>A switcher opens on the futures catalog grouped by exchange: CME equity index, CBOT rates and grains, NYMEX energy, COMEX metals. Front months resolve automatically, days-to-roll sit beside every contract, and micros are one keystroke from their full-size siblings.</p>
     <p><span class="leadin">Order flow as the default view.</span>Footprints, cumulative delta and volume profile form the standard chart workspace, through MotiveWave running natively or Sierra Chart under a tested compatibility layer. The system also watches the tape itself: large-lot prints, icebergs, pulled liquidity, absorption, and delta divergence, raised as alerts tied to your marked levels.</p>
@@ -321,9 +323,9 @@
     <div>
       <div class="facts">
         <div class="row"><span>Base system</span><span>Arch Linux · Hyprland</span></div>
-        <div class="row"><span>Upstream</span><span>Omarchy (friendly fork)</span></div>
+        <div class="row"><span>Upstream</span><span>Omarchy + trading overlay</span></div>
         <div class="row"><span>Install</span><span>One command · ≈ 2 min</span></div>
-        <div class="row"><span>Accounts</span><span>None — nothing to log into</span></div>
+        <div class="row"><span>Accounts</span><span>Public crypto data: no account</span></div>
         <div class="row"><span>Upstream backing</span><span>$8M foundation</span></div>
         <div class="row"><span>AI integration</span><span>Native, fenced</span></div>
         <div class="row"><span>License &amp; build</span><span>Open, forkable</span></div>
@@ -339,7 +341,7 @@
   <ol class="clauses">
     <li><b>On latency:</b> retail order flow travels hundreds of milliseconds to a broker, and no kernel patch changes that. What ships instead is what matters at that distance: truthful clocks, a machine that never sleeps mid-session, and a power-failure plan.</li>
     <li><b>On Windows-only platforms:</b> some trading software will simply never run on Linux. IBKR runs natively here, TradingView runs accelerated, and Sierra Chart runs well under a tested compatibility layer — but Quantower, NinjaTrader and their class stay on Windows, and we say so here rather than in a footnote.</li>
-    <li><b>On data:</b> everything live today is real exchange data — spot flow and book, perp depth, options — never delayed data dressed as live, never a number the feed didn't provide. CME depth and OPRA options flow are paid feeds; until you plug yours in, those views stay dark and say so plainly.</li>
+    <li><b>On data:</b> everything live today is real exchange data — spot flow and book, perp depth, options — never delayed data dressed as live, never a number the feed didn't provide. Live CME depth and OPRA options flow require licensed data and an implemented integration. They are not working connections in the current release; a subscription alone does not enable them.</li>
     <li><b>On tilt:</b> when broker adapters land, the profit-and-loss readout will ship disabled. Watching unrealized P&amp;L all day is how accounts die; turning it on is a decision, not a default.</li>
     <li><b>On the assistant:</b> it analyzes everything and advises on nothing. No orders, no signals, no exceptions, by architecture rather than by policy.</li>
   </ol>
@@ -348,7 +350,7 @@
 <section>
   <div class="sechead"><span class="num">VIII.</span><span class="name">Follow the build</span></div>
   <h2>Trade the open, <em>not the <span class="hl">setup.</span></em></h2>
-  <p class="standfirst">The overlay is live. Order flow in six views, crypto options flow, the flow canvas, the desk, the journal, two shades of The Pit — on stock Omarchy, today, with one command. The installable ISO follows when it has earned it. If you believe the trading desk should belong to the trader — not to a license server — pull up a chair.</p>
+  <p class="standfirst">The overlay is live. Order flow in six views, crypto options flow, the flow canvas, the desk, the journal, two shades of The Pit — on stock Omarchy, today, with one command. Alpharch stays an overlay on your existing Omarchy installation. If you believe the trading desk should belong to the trader — not to a license server — pull up a chair.</p>
   <p><span class="listing"><span class="p">❯</span> curl -fsSL https://alpharch.org/install | bash<span class="cursor"></span></span><br><span class="smallnote">Requires <a href="https://omarchy.org">Omarchy</a> (or any Arch + Hyprland). Fully reversible — uninstall.sh removes every trace and keeps your journal.</span></p>
   <ol class="clauses">
     <li><b>Install Omarchy.</b> Download the ISO at <a href="https://omarchy.org">omarchy.org</a> — a clean install runs about 76 seconds.</li>

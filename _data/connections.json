@@ -1,0 +1,1504 @@
+[
+  {
+    "slug": "interactive-brokers",
+    "name": "Interactive Brokers",
+    "category": "Futures brokers",
+    "route": "TWS / IB Gateway",
+    "linux": "Native Linux software",
+    "status": "planned",
+    "summary": "IBKR supplies Linux builds of TWS and IB Gateway. An Alpharch connection through the TWS API still needs an adapter and account testing.",
+    "needs": [
+      "An IBKR account and its required market-data subscriptions.",
+      "The Linux TWS or IB Gateway application, signed in locally."
+    ],
+    "steps": [
+      [
+        "Install the official Linux application",
+        "Download TWS or IB Gateway from IBKR. Gateway uses fewer desktop resources; TWS also lets you inspect the same data in its own interface."
+      ],
+      [
+        "Prepare the local API connection",
+        "In the application’s API settings, enable socket clients, retain read-only access for charting, and note the socket port. Keep access on this computer."
+      ],
+      [
+        "Confirm your market data",
+        "Check the exact futures contract and exchange in IBKR. Quotes, tick-by-tick subscriptions and market depth have different permissions and limits."
+      ],
+      [
+        "Connect when the Alpharch adapter is available",
+        "The planned flow selects the local gateway, port and environment. This guide does not mean an IBKR account can connect to the current Alpharch release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Gateway opens but no chart data",
+        "Check that you are signed in, the API is enabled and the socket port matches. A successful socket connection alone does not establish a market-data entitlement."
+      ],
+      [
+        "A ladder or footprint is missing detail",
+        "Check depth and tick-by-tick permissions and subscription limits. Ordinary watchlist quotes do not establish full-depth or market-by-order coverage."
+      ]
+    ],
+    "sources": [
+      [
+        "Linux downloads",
+        "https://www.interactivebrokers.com/en/trading/ibgateway-latest.php?menu=A"
+      ],
+      [
+        "TWS / Gateway setup",
+        "https://www.interactivebrokers.com/campus/trading-lessons/installing-configuring-tws-for-the-api/"
+      ],
+      [
+        "Tick-by-tick data limits",
+        "https://www.interactivebrokers.com/docs/tws-api/doc/market-data-live/tick-by-tick-data/request-tick-by-tick-data"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": "ibkr ib gateway tws"
+  },
+  {
+    "slug": "rithmic",
+    "name": "Rithmic",
+    "category": "Data & routing",
+    "route": "Rithmic R | Protocol API",
+    "linux": "Cross-platform protocol",
+    "status": "access",
+    "summary": "Rithmic is a data and routing provider used by multiple futures brokers. Its WebSocket/protobuf protocol is a route for a Linux integration; R | Trader Pro itself is a Windows application.",
+    "needs": [
+      "Broker-issued Rithmic credentials, system name and market-data permissions.",
+      "Alpharch developer-kit access, implementation and successful conformance before production use."
+    ],
+    "steps": [
+      [
+        "Find your feed credentials",
+        "Use the Rithmic login issued for your trading account. Your broker’s customer-portal password may be different."
+      ],
+      [
+        "Confirm the system and subscriptions",
+        "Ask the broker which Rithmic system your account uses, whether third-party access is enabled, and what depth is included."
+      ],
+      [
+        "Check Alpharch availability",
+        "The adapter is not released. Production requires Rithmic conformance; personal credentials alone cannot enable an unapproved application."
+      ]
+    ],
+    "trouble": [
+      [
+        "Login works elsewhere but not in another platform",
+        "Verify the exact system, application permission and simultaneous-session allowance with the broker."
+      ],
+      [
+        "Expecting MBO detail",
+        "Confirm that the account and integration deliver individual-order data. Level-2 availability by itself is not proof of MBO coverage."
+      ]
+    ],
+    "sources": [
+      [
+        "Developer access and conformance",
+        "https://www.rithmic.com/documentation"
+      ],
+      [
+        "Rithmic desktop and protocol products",
+        "https://www.rithmic.com/products"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "cqg",
+    "name": "CQG",
+    "category": "Data & routing",
+    "route": "CQG Web API",
+    "linux": "Cross-platform Web API",
+    "status": "access",
+    "summary": "CQG can connect a Linux application through its Web API. Production access requires application identifiers and conformance; browser authorization also requires CQG app registration.",
+    "needs": [
+      "A CQG account enabled by the broker for the intended application and exchanges.",
+      "Alpharch registration, adapter implementation and production conformance."
+    ],
+    "steps": [
+      [
+        "Identify the CQG account",
+        "Use the CQG credentials supplied for your trading platform, not an unrelated broker-portal login."
+      ],
+      [
+        "Check account access",
+        "Confirm the exchange subscriptions and third-party platform permissions with your broker."
+      ],
+      [
+        "Use the supported authorization route when released",
+        "CQG documents user logon and registered OAuth with PKCE. Alpharch has not released either route; this website does not collect credentials."
+      ]
+    ],
+    "trouble": [
+      [
+        "Application or private-label error",
+        "The software’s CQG registration must match the account’s permissions. This is not fixed by repeatedly changing your password."
+      ],
+      [
+        "Quotes without depth",
+        "Ask for the data entitlement needed for the exact contract and view. Top-of-book access does not supply a full ladder."
+      ]
+    ],
+    "sources": [
+      [
+        "CQG logon requirements",
+        "https://help.cqg.com/apihelp/Documents/logon.htm"
+      ],
+      [
+        "CQG browser authorization",
+        "https://partners.cqg.com/deployment/cqg-desktop-integrations/cqg-oauth-2_0-documentation"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "tradovate",
+    "name": "Tradovate",
+    "category": "Futures brokers",
+    "route": "Tradovate API / OAuth",
+    "linux": "Cross-platform web API",
+    "status": "access",
+    "summary": "Tradovate documents a web API with OAuth and separate live, simulation and market-data services. Account eligibility and API access must be confirmed before an Alpharch integration can be used.",
+    "needs": [
+      "An eligible account with API access and the required exchange subscriptions.",
+      "A registered and tested Alpharch integration. Prop-firm access must be checked separately."
+    ],
+    "steps": [
+      [
+        "Confirm API eligibility",
+        "Check the current API-access requirements in Tradovate’s official documentation and your account settings. A platform login is not proof of API access."
+      ],
+      [
+        "Identify the environment",
+        "Keep live and simulation accounts distinct. Market-data permission is separate from the ability to sign in."
+      ],
+      [
+        "Authorize when supported",
+        "A released third-party connection should direct you through the supported authorization flow. Alpharch’s Tradovate adapter is not available yet."
+      ]
+    ],
+    "trouble": [
+      [
+        "Demo or prop account will not authorize",
+        "Ask the account provider whether third-party API use is allowed for that specific account."
+      ],
+      [
+        "Account appears but quotes do not",
+        "Check API and exchange-data permissions, then the exact contract symbol and environment."
+      ]
+    ],
+    "sources": [
+      [
+        "API access, OAuth and market data",
+        "https://api.tradovate.com/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "ninjatrader",
+    "name": "NinjaTrader",
+    "category": "Futures brokers",
+    "route": "Account-specific connection",
+    "linux": "Verify the account route",
+    "status": "verify",
+    "summary": "A NinjaTrader login does not automatically authorize another charting application. NinjaTrader’s account FAQ documents Continuum / CQG credentials for applicable accounts; confirm your account’s actual route.",
+    "needs": [
+      "Written confirmation of the connection available to your specific account.",
+      "A tested Alpharch adapter for that route."
+    ],
+    "steps": [
+      [
+        "Find the account’s connection details",
+        "Check your account documentation or ask NinjaTrader which third-party data route is enabled."
+      ],
+      [
+        "Match the route",
+        "If you were issued CQG credentials, read the CQG guide. Only use Tradovate API instructions if that route is explicitly enabled for your account."
+      ],
+      [
+        "Check release support",
+        "NinjaTrader is not a working broker connection in the current Alpharch release."
+      ]
+    ],
+    "trouble": [
+      [
+        "NinjaTrader website password is rejected",
+        "Brokerage, website and data-provider credentials can serve different purposes. Confirm the required login instead of trying every connection type."
+      ]
+    ],
+    "sources": [
+      [
+        "NinjaTrader account FAQ",
+        "https://www.ninjatrader.com/ninjatrader-account-faqs/"
+      ]
+    ],
+    "related": [
+      "cqg",
+      "tradovate"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": "ninja trader continuum"
+  },
+  {
+    "slug": "amp-futures",
+    "name": "AMP Futures",
+    "category": "Futures brokers",
+    "route": "CQG / Rithmic / TT / Teton",
+    "linux": "Depends on the selected route",
+    "status": "access",
+    "summary": "AMP advertises several data and routing choices. Alpharch must support the particular route enabled on your account; an AMP customer-portal login is not a universal market-data login.",
+    "needs": [
+      "Your enabled platform/data route and its separate login.",
+      "Exchange subscriptions appropriate to quotes or depth."
+    ],
+    "steps": [
+      [
+        "Check your AMP platform setup",
+        "Find which data provider was selected for your account. Do not change subscriptions merely to try an unreleased adapter."
+      ],
+      [
+        "Choose the matching guide",
+        "Use the CQG or Rithmic page for those routes. TT and Teton do not have an Alpharch adapter."
+      ],
+      [
+        "Verify access with AMP",
+        "Confirm the requested application and depth permissions before a future connection attempt."
+      ]
+    ],
+    "trouble": [
+      [
+        "Quotes are available but the ladder is empty",
+        "AMP lists top-of-book and depth subscriptions separately. Check the exchange and subscription level."
+      ],
+      [
+        "Connection fails during the weekend",
+        "Check the provider’s maintenance status before changing credentials."
+      ]
+    ],
+    "sources": [
+      [
+        "AMP platform and feed choices",
+        "https://www.ampfutures.com/"
+      ],
+      [
+        "AMP data subscriptions",
+        "https://www.ampfutures.com/trading-info/exchange-data-fees"
+      ]
+    ],
+    "related": [
+      "cqg",
+      "rithmic"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": "amp clearing"
+  },
+  {
+    "slug": "edgeclear",
+    "name": "EdgeClear",
+    "category": "Futures brokers",
+    "route": "Rithmic / CQG / CTS / Teton",
+    "linux": "Depends on the selected route",
+    "status": "access",
+    "summary": "EdgeClear lists Rithmic, CQG, Teton and CTS. Confirm which provider is attached to your account before choosing a connection.",
+    "needs": [
+      "Your actual feed credentials and exchange permissions.",
+      "A released adapter for that provider."
+    ],
+    "steps": [
+      [
+        "Identify your feed",
+        "Find the provider on your setup confirmation or ask EdgeClear."
+      ],
+      [
+        "Read the route guide",
+        "Rithmic and CQG have separate guides here. CTS and Teton are not implemented in Alpharch."
+      ],
+      [
+        "Confirm application permission",
+        "Ask whether the account can use the intended third-party platform and whether a concurrent connection is allowed."
+      ]
+    ],
+    "trouble": [
+      [
+        "An EdgeClear portal login does not connect",
+        "Use the data-provider credentials issued for the account, once the matching Alpharch adapter is released."
+      ]
+    ],
+    "sources": [
+      [
+        "EdgeClear supported data feeds",
+        "https://support.edgeclear.com/portal/en/kb/articles/what-data-feeds-does-edgeclear-offer"
+      ]
+    ],
+    "related": [
+      "rithmic",
+      "cqg"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "optimus-futures",
+    "name": "Optimus Futures",
+    "category": "Futures brokers",
+    "route": "Broker-issued data route",
+    "linux": "Depends on the selected route",
+    "status": "access",
+    "summary": "Optimus supports several platforms and separates account/statement logins from platform logins. Its support documentation identifies Rithmic and CQG routes for Optimus Flow.",
+    "needs": [
+      "The data route and platform login assigned to your account.",
+      "Permission to connect a supported third-party application."
+    ],
+    "steps": [
+      [
+        "Find the platform login",
+        "Do not confuse your clearing-firm statements login with a trading-platform login."
+      ],
+      [
+        "Check the assigned data provider",
+        "Confirm Rithmic, CQG or another route with Optimus."
+      ],
+      [
+        "Follow that provider’s guide",
+        "The broker relationship does not remove Alpharch’s adapter and approval requirements."
+      ]
+    ],
+    "trouble": [
+      [
+        "The portal works but market data does not",
+        "Verify the platform credentials and exchange-data permissions with the account provider."
+      ]
+    ],
+    "sources": [
+      [
+        "Optimus account and platform logins",
+        "https://optimusfutures.com/account-login.php"
+      ],
+      [
+        "Optimus Flow routing",
+        "https://support.optimusfutures.com/trading-platform-routing-fees"
+      ]
+    ],
+    "related": [
+      "rithmic",
+      "cqg"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "tradestation",
+    "name": "TradeStation",
+    "category": "Futures brokers",
+    "route": "TradeStation API / OAuth",
+    "linux": "Cross-platform HTTPS API",
+    "status": "access",
+    "summary": "TradeStation exposes brokerage and market-data services over HTTPS, with a separate simulation service. Its developer onboarding uses an API key and OAuth.",
+    "needs": [
+      "An account with the required products and data permissions.",
+      "Approved application access and an implemented Alpharch OAuth adapter."
+    ],
+    "steps": [
+      [
+        "Confirm developer access",
+        "Review TradeStation’s API onboarding and permissions for the intended account."
+      ],
+      [
+        "Separate data from account access",
+        "Identify the futures instruments and streaming data needed for your charts."
+      ],
+      [
+        "Authorize only when supported",
+        "The planned connection is browser authorization. Alpharch does not currently provide a working TradeStation login."
+      ]
+    ],
+    "trouble": [
+      [
+        "Expecting the desktop app to be required",
+        "The documented API is HTTPS-based. Linux feasibility comes from that API, not from a claim that TradeStation’s desktop software runs natively on Omarchy."
+      ]
+    ],
+    "sources": [
+      [
+        "API documentation",
+        "https://api.tradestation.com/docs/"
+      ],
+      [
+        "API onboarding",
+        "https://www.tradestation.com/insights/getting-started-with-a-trading-platform-api/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "tastytrade",
+    "name": "tastytrade",
+    "category": "Futures brokers",
+    "route": "OAuth / streaming market data",
+    "linux": "Cross-platform web API",
+    "status": "access",
+    "summary": "tastytrade documents futures and crypto access through its Open API. Current authentication uses OAuth; third-party applications require verification before other users can authorize them.",
+    "needs": [
+      "An eligible account with market-data permissions.",
+      "A verified third-party application and a tested Alpharch adapter."
+    ],
+    "steps": [
+      [
+        "Review current OAuth requirements",
+        "Use the current tastytrade developer guide. The former password-session flow was retired in February 2026."
+      ],
+      [
+        "Check product and data permissions",
+        "Futures, options and crypto availability depend on your account and the requested data."
+      ],
+      [
+        "Authorize when an integration is released",
+        "Alpharch has not released a tastytrade adapter. Do not enter a broker password on this website."
+      ]
+    ],
+    "trouble": [
+      [
+        "An old tutorial uses a password session",
+        "Follow the current OAuth documentation; legacy session examples are obsolete."
+      ],
+      [
+        "Sandbox credentials fail in production",
+        "tastytrade separates sandbox and production credentials and data."
+      ]
+    ],
+    "sources": [
+      [
+        "OAuth authentication and third-party verification",
+        "https://developer.tastytrade.com/docs/authentication/oauth2/"
+      ],
+      [
+        "Open API products",
+        "https://developer.tastytrade.com/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": "tastyworks"
+  },
+  {
+    "slug": "ironbeam",
+    "name": "Ironbeam",
+    "category": "Futures brokers",
+    "route": "Ironbeam REST / streaming API",
+    "linux": "Cross-platform web API",
+    "status": "access",
+    "summary": "Ironbeam documents token authentication, symbol search, entitled exchanges and streams for quotes, depth and trades. It offers distinct demo and live services.",
+    "needs": [
+      "API-enabled account access from Ironbeam and exchange permissions.",
+      "An implemented and tested Alpharch integration."
+    ],
+    "steps": [
+      [
+        "Confirm account API access",
+        "Ask Ironbeam whether the intended account is enabled for the API and requested environment."
+      ],
+      [
+        "Check symbols and entitled exchanges",
+        "Use the account’s actual instruments and data permissions; a successful login alone is insufficient."
+      ],
+      [
+        "Connect once released",
+        "Alpharch’s Ironbeam adapter is not available. A future local connection must authenticate against the correct demo or live service."
+      ]
+    ],
+    "trouble": [
+      [
+        "Account connects but the symbol is unknown",
+        "Check the provider’s symbol search and contract expiry."
+      ],
+      [
+        "No depth stream",
+        "Verify exchange entitlement and a separate depth subscription."
+      ]
+    ],
+    "sources": [
+      [
+        "Ironbeam API overview",
+        "https://www.ironbeam.com/api/"
+      ],
+      [
+        "Authentication and stream reference",
+        "https://docs.ironbeamapi.com/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "stonex",
+    "name": "StoneX",
+    "category": "Futures brokers",
+    "route": "Account-specific CQG route",
+    "linux": "Cross-platform route where enabled",
+    "status": "access",
+    "summary": "StoneX publishes a directory of third-party futures platforms using CQG. Whether a given StoneX account can use Alpharch requires confirmation and a released CQG adapter.",
+    "needs": [
+      "The platform/data route enabled for your StoneX account.",
+      "Provider credentials and exchange permissions."
+    ],
+    "steps": [
+      [
+        "Confirm the route with StoneX",
+        "Ask which third-party connection is enabled for your account."
+      ],
+      [
+        "Keep the logins separate",
+        "Use provider-issued platform credentials for market data, not the account-management login."
+      ],
+      [
+        "Read the CQG guide if applicable",
+        "Other StoneX services should not be assumed to use the same connection."
+      ]
+    ],
+    "trouble": [
+      [
+        "A StoneX login is rejected by CQG",
+        "Confirm that the account was provisioned for the specific CQG platform and use its assigned credentials."
+      ]
+    ],
+    "sources": [
+      [
+        "StoneX third-party CQG platforms",
+        "https://futures.stonex.com/third-party-software"
+      ]
+    ],
+    "related": [
+      "cqg"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "dorman",
+    "name": "Dorman Trading",
+    "category": "Futures brokers",
+    "route": "Confirm through the broker / FCM",
+    "linux": "Route not yet verified",
+    "status": "verify",
+    "summary": "Dorman offers a range of third-party trading technology. The clearing relationship alone does not identify the data API or authorize an Alpharch connection.",
+    "needs": [
+      "Your platform setup confirmation, actual provider and exchange entitlements."
+    ],
+    "steps": [
+      [
+        "Identify the account’s platform",
+        "Ask the introducing broker or Dorman for the exact data route and login instructions."
+      ],
+      [
+        "Check third-party permissions",
+        "Confirm whether another application may consume that feed and what subscriptions are needed."
+      ],
+      [
+        "Match a supported adapter",
+        "No Dorman-specific connection is released in Alpharch. Use a provider guide only after the account route is confirmed."
+      ]
+    ],
+    "trouble": [
+      [
+        "Unsure whether to select Dorman or a feed provider",
+        "The FCM holds the account; the feed route determines the software integration."
+      ]
+    ],
+    "sources": [
+      [
+        "Dorman trading technology",
+        "https://www.dormantrading.com/home/home-trading-technology/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "phillip-capital",
+    "name": "Phillip Capital",
+    "category": "Futures brokers",
+    "route": "Account-specific platform setup",
+    "linux": "Route must be confirmed",
+    "status": "verify",
+    "summary": "Phillip Capital describes support for authorized trading platforms through its broker relationships. Confirm the platform and account permissions assigned to you; a clearing account is not a generic charting API.",
+    "needs": [
+      "The electronic-trading setup confirmation and actual provider credentials."
+    ],
+    "steps": [
+      [
+        "Review the platform setup",
+        "Find the platform approved for your account and the exchanges enabled."
+      ],
+      [
+        "Ask about third-party use",
+        "Confirm the route available to an external Linux charting application."
+      ],
+      [
+        "Check Alpharch support",
+        "No Phillip Capital-specific adapter is released. If CQG or Rithmic is assigned, review the matching guide."
+      ]
+    ],
+    "trouble": [
+      [
+        "Account exists but a platform cannot sign in",
+        "Platform provisioning and product access must be confirmed separately."
+      ]
+    ],
+    "sources": [
+      [
+        "Phillip Capital platform and broker support",
+        "https://www.phillipcapital.com/ib-partnerships"
+      ]
+    ],
+    "related": [
+      "cqg",
+      "rithmic"
+    ],
+    "reviewed": "2026-09-05",
+    "aliases": "phillipcapital"
+  },
+  {
+    "slug": "schwab",
+    "name": "Charles Schwab / thinkorswim",
+    "category": "Futures brokers",
+    "route": "Developer access requires review",
+    "linux": "Futures API route not verified",
+    "status": "verify",
+    "summary": "Schwab has a developer portal, but this review could not verify the futures market-data permissions needed for Alpharch from its public portal. thinkorswim access should not be treated as automatic external API access.",
+    "needs": [
+      "Confirmation from Schwab of futures data available to the intended application and account."
+    ],
+    "steps": [
+      [
+        "Check the developer portal",
+        "Review the applicable API product and approval requirements in your Schwab developer account."
+      ],
+      [
+        "Ask specifically about futures data",
+        "Confirm streaming quotes, trades, depth and historical coverage separately; do not infer them from access in thinkorswim."
+      ],
+      [
+        "Wait for verified support",
+        "Alpharch has no working Schwab adapter. We are not publishing a speculative login procedure."
+      ]
+    ],
+    "trouble": [
+      [
+        "A third-party example claims support",
+        "Verify the exact endpoint and permissions in current official documentation before relying on it."
+      ]
+    ],
+    "sources": [
+      [
+        "Schwab developer portal",
+        "https://developer.schwab.com/products/trader-api--individual"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": "tos think or swim"
+  },
+  {
+    "slug": "binance-us",
+    "name": "Binance.US",
+    "category": "Crypto exchanges",
+    "route": "Separate public spot API",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Binance.US has its own API documentation and market-data endpoints. It must not reuse a Binance global connection or be presented as the same derivatives service. Alpharch has no Binance.US adapter.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Binance.US official API documentation",
+        "https://docs.binance.us/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "gemini",
+    "name": "Gemini",
+    "category": "Crypto exchanges",
+    "route": "Public market data / private authorization",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Gemini documents public prices, order books and trades without credentials. Private features have separate authorization and product permissions. Alpharch has not released a Gemini adapter.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Gemini official API documentation",
+        "https://developer.gemini.com/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "coinbase",
+    "name": "Coinbase",
+    "category": "Crypto exchanges",
+    "route": "Public Exchange market data",
+    "linux": "Cross-platform market-data API",
+    "status": "existing",
+    "summary": "Coinbase Exchange separates public market data from authenticated trading APIs. Alpharch already uses public Coinbase spot trades and book data; connecting that feed does not require a trading login.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Open the current flow tool",
+        "In the installed Alpharch command line, launch alphad --exchange coinbase --market spot --symbol BTC-USD."
+      ],
+      [
+        "Choose a view",
+        "Use the flow, depth, heatmap, tape or profile views. No Coinbase password or API key is needed for this public feed."
+      ],
+      [
+        "Try the development desk when available",
+        "The new chart desk supports Coinbase BTC, ETH and SOL against USD. It is a development build; do not assume the public installer already includes it."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Coinbase official API documentation",
+        "https://docs.cdp.coinbase.com/exchange/introduction/welcome"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "hyperliquid",
+    "name": "Hyperliquid",
+    "category": "Crypto exchanges",
+    "route": "Public perpetual market data",
+    "linux": "Cross-platform market-data API",
+    "status": "existing",
+    "summary": "Hyperliquid documents public trade and order-book subscriptions. Alpharch already reads its public perpetual feed without signing a wallet transaction or linking an account.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Open the current perpetual flow tool",
+        "Launch alphad --exchange hyperliquid --market perp --symbol BTC."
+      ],
+      [
+        "Inspect the feed",
+        "Check the venue and perpetual label before comparing prices. Book history begins when the connection starts."
+      ],
+      [
+        "Use the development chart desk when available",
+        "BTC, ETH and SOL perpetuals are available in the development desk. Public data requires no wallet secret or transaction signature."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Hyperliquid official API documentation",
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/websocket/subscriptions"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "deribit",
+    "name": "Deribit",
+    "category": "Crypto exchanges",
+    "route": "Public options / separate private API",
+    "linux": "Cross-platform market-data API",
+    "status": "existing",
+    "summary": "Deribit separates public data methods from authenticated private account methods. Alpharch’s existing alphaopt tool uses public options data; it is separate from the new chart desk.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Open the options tool",
+        "Launch alphaopt from the installed Alpharch tools. Read its help for supported assets and views."
+      ],
+      [
+        "Choose the options view",
+        "The existing tool includes a tape and open-interest map. Open interest is not the same thing as traded flow or dealer positioning."
+      ],
+      [
+        "Keep the account separate",
+        "Reading this public options feed does not connect an account or enable execution. The new desk does not yet contain a full Deribit chart adapter."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Deribit official API documentation",
+        "https://docs.deribit.com/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "binance",
+    "name": "Binance",
+    "category": "Crypto exchanges",
+    "route": "Public spot / perpetual streams",
+    "linux": "Cross-platform market-data API",
+    "status": "limited",
+    "summary": "Binance publishes spot WebSocket market streams. Alpharch retains legacy Binance spot and perpetual parsers, but connections from this test location returned HTTP 451; the new desk does not offer this feed.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Check availability first",
+        "Use Binance only where the service is available to you. Binance and Binance.US are different services."
+      ],
+      [
+        "Check the installed tool’s help",
+        "The legacy alphad tool accepts --exchange binance with --market spot or --market perp. A parser existing in the software does not guarantee a reachable feed."
+      ],
+      [
+        "Respect connection errors",
+        "HTTP 451 is an access restriction, not a reason to change passwords or bypass the restriction. Choose a reachable supported source."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Binance official API documentation",
+        "https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "kraken",
+    "name": "Kraken",
+    "category": "Crypto exchanges",
+    "route": "Public spot / separate futures API",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Kraken documents public and authenticated spot WebSocket endpoints. Its futures API is separate, so a spot connection must not be presented as futures coverage.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Kraken official API documentation",
+        "https://docs.kraken.com/exchange/guides/websockets/introduction"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "bybit",
+    "name": "Bybit",
+    "category": "Crypto exchanges",
+    "route": "Product-specific public WebSockets",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Bybit documents separate public streams for spot, linear, inverse and options products, with distinct private streams. Alpharch has not implemented these routes.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Bybit official API documentation",
+        "https://bybit-exchange.github.io/docs/v5/ws/connect"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "okx",
+    "name": "OKX",
+    "category": "Crypto exchanges",
+    "route": "Public / private WebSocket API",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "OKX documents public and private WebSocket services. Endpoint selection and product availability must match the user’s regional account; Alpharch has no released OKX adapter.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "OKX official API documentation",
+        "https://www.okx.com/docs-v5"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "bitget",
+    "name": "Bitget",
+    "category": "Crypto exchanges",
+    "route": "Public market WebSocket channels",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Bitget documents public ticker, candle, trade and depth channels without login. Account channels are separate; Alpharch has no Bitget adapter yet.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Bitget official API documentation",
+        "https://www.bitget.com/api-doc/classic/quickStart/websocket-intro"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "gate",
+    "name": "Gate",
+    "category": "Crypto exchanges",
+    "route": "Public / private API v4",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Gate documents direct subscriptions to public channels and API-key authentication for private channels. Alpharch has not implemented a Gate connection.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Gate official API documentation",
+        "https://www.gate.com/docs/developers/apiv4/ws/en/"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": "gate.io"
+  },
+  {
+    "slug": "kucoin",
+    "name": "KuCoin",
+    "category": "Crypto exchanges",
+    "route": "Public market-data API",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "KuCoin publishes several WebSocket interfaces and connection procedures. The chosen API family and account region must match; Alpharch does not yet implement a KuCoin adapter.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "KuCoin official API documentation",
+        "https://www.kucoin.com/docs-new/websocket-api/base-info/introduction"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "crypto-com",
+    "name": "Crypto.com Exchange",
+    "category": "Crypto exchanges",
+    "route": "Exchange REST / WebSocket API",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Crypto.com Exchange documents separate user and market-data WebSocket services. Its Exchange API should not be confused with a login to another Crypto.com product.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Crypto.com Exchange official API documentation",
+        "https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": "crypto.com"
+  },
+  {
+    "slug": "bitfinex",
+    "name": "Bitfinex",
+    "category": "Crypto exchanges",
+    "route": "Public market WebSocket channels",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "Bitfinex documents public channel subscriptions separately from authenticated account operations. An Alpharch adapter has not been released.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "Bitfinex official API documentation",
+        "https://docs.bitfinex.com/docs/ws-public"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "bitmex",
+    "name": "BitMEX",
+    "category": "Crypto exchanges",
+    "route": "Public / authenticated WebSocket topics",
+    "linux": "Cross-platform market-data API",
+    "status": "planned",
+    "summary": "BitMEX publishes a WebSocket API with incremental table updates. Alpharch must implement its snapshots and updates before it can offer a reliable BitMEX feed.",
+    "needs": [
+      "A supported Alpharch adapter for this exchange and product.",
+      "Regional availability and the provider’s current data-use conditions."
+    ],
+    "steps": [
+      [
+        "Choose the exact market",
+        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+      ],
+      [
+        "Use public data when supported",
+        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+      ],
+      [
+        "Check Alpharch availability",
+        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+      ]
+    ],
+    "trouble": [
+      [
+        "Price differs from another venue",
+        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+      ],
+      [
+        "Connection unavailable in your region",
+        "Use a provider available to you. Do not bypass regional access restrictions."
+      ]
+    ],
+    "sources": [
+      [
+        "BitMEX official API documentation",
+        "https://www.bitmex.com/app/wsAPI"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "databento",
+    "name": "Databento",
+    "category": "Data & routing",
+    "route": "Licensed live / historical data",
+    "linux": "Cross-platform client libraries",
+    "status": "access",
+    "summary": "Databento supplies live and historical market data through documented APIs. Alpharch’s development build has a CSV import path; that is not a live Databento connection.",
+    "needs": [
+      "Databento account access and the dataset/schema permissions needed for your market.",
+      "A released live adapter, or supported files for the development importer."
+    ],
+    "steps": [
+      [
+        "Identify the dataset and schema",
+        "Confirm trades, depth or market-by-order coverage for the intended venue. These are distinct data products."
+      ],
+      [
+        "Separate import from live streaming",
+        "A downloaded CSV can be used only through a compatible importer. It does not establish a live feed."
+      ],
+      [
+        "Check Alpharch release support",
+        "The live adapter is not released. Development import support is documented with the application and should not be assumed present in the public installer."
+      ]
+    ],
+    "trouble": [
+      [
+        "Historical data works but live data does not",
+        "Check live permissions and integration support independently."
+      ],
+      [
+        "A CSV does not contain individual orders",
+        "Inspect its schema. Aggregated depth or candle data cannot reconstruct missing MBO events."
+      ]
+    ],
+    "sources": [
+      [
+        "Databento data and API documentation",
+        "https://databento.com/docs"
+      ],
+      [
+        "Live authentication",
+        "https://databento.com/docs/api-reference-live/gateway-control-messages/authentication-response?historical=python&live=raw"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  },
+  {
+    "slug": "dxfeed",
+    "name": "dxFeed",
+    "category": "Data & routing",
+    "route": "dxLink / contracted data service",
+    "linux": "Cross-platform WebSocket API",
+    "status": "access",
+    "summary": "dxFeed documents dxLink market-data connections with multiple authorization modes. A demo endpoint is not proof of live exchange entitlement or a working Alpharch adapter.",
+    "needs": [
+      "The contracted service endpoint and authentication supplied for your account.",
+      "The required exchange permissions and an implemented Alpharch adapter."
+    ],
+    "steps": [
+      [
+        "Confirm the service",
+        "Ask which markets, depth and live or delayed permissions are included in the account."
+      ],
+      [
+        "Use the assigned access details",
+        "Endpoint and authorization must match the subscribed service. Credentials issued through another platform may not be portable."
+      ],
+      [
+        "Check Alpharch availability",
+        "No dxFeed adapter is released. Demo examples remain development references, not live production connections."
+      ]
+    ],
+    "trouble": [
+      [
+        "Demo quotes appear but the contract is unavailable",
+        "Verify the service scope and entitlement before treating the feed as live."
+      ],
+      [
+        "Token rejected",
+        "Confirm the token’s intended endpoint, scope and expiry with the issuing provider."
+      ]
+    ],
+    "sources": [
+      [
+        "dxLink connection documentation",
+        "https://kb.dxfeed.com/en/market-data-api/dxlink.html"
+      ],
+      [
+        "Token authorization",
+        "https://kb.dxfeed.com/en/data-services/real-time-and-delayed-services/token-based-authorization.html"
+      ]
+    ],
+    "related": [],
+    "reviewed": "2026-09-05",
+    "aliases": ""
+  }
+]

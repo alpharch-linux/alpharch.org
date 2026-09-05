@@ -103,7 +103,7 @@
 <header class="mast">
   <div class="page mastrow">
     <div class="brand"><a href="/">ALPHARCH<span class="dot">.</span></a></div>
-    <div class="mastnote">The Manual · Overlay v1.6 · <a href="/">Front page</a></div>
+    <div class="mastnote">The Manual · Overlay v1.6 · <a href="/">Front page</a> · <a href="/connections/">Connection guides</a></div>
   </div>
 </header>
 
@@ -261,7 +261,7 @@
   <li><b>"Everything opens fullscreen!"</b> It doesn't — that's tiling. One window on a workspace correctly fills it, because there's nothing to share the space with. Open a second window on the same workspace and watch them split. (A window that's genuinely stuck full-width was toggled with Omarchy's <kbd>SUPER+ALT+F</kbd> — press it again.)</li>
   <li><b>The footprint looks sparse.</b> It builds from live trades and needs a few minutes of tape. The canvas (<kbd>SUPER+ALT+V</kbd>) is the better first look at a fresh session.</li>
   <li><b>Everything is the wrong colors.</b> Alpharch wears your active Omarchy theme. For the house look: <code>omarchy-theme-set pit</code>.</li>
-  <li><b>A feed shows unreachable.</b> Run <code>alpharch doctor</code> — it tests each feed from your machine and says exactly what's up. The live free tier is Coinbase (spot), Hyperliquid (perps), and Deribit (options); Binance remains available outside the US.</li>
+  <li><b>A feed shows unreachable.</b> Run <code>alpharch doctor</code> — it tests each feed from your machine and says exactly what's up. The live free tier is Coinbase (spot), Hyperliquid (perps), and Deribit (options); Binance availability depends on your region and the provider’s restrictions.</li>
   <li><b>The Brain says it can't find Claude.</b> The Narrator speaks through your own locally installed <code>claude</code> CLI. <code>trade-brain check</code> diagnoses it; Omarchy's AI setup provides it.</li>
   <li><b>Anything else.</b> <code>alpharch update</code> brings the newest fixes. Issues and code: <a href="https://github.com/alpharch-linux/alpharch">github.com/alpharch-linux/alpharch</a>.</li>
 </ol>
@@ -275,8 +275,8 @@
 <h2>What this will <em>never do.</em></h2>
 <ol class="clauses">
   <li><b>No signals, no picks, no AI that trades.</b> These are tools for reading markets. The reading is yours.</li>
-  <li><b>No fake data.</b> Real futures depth (CME) and equity options flow (OPRA) are paid feeds; until you plug one in, Alpharch says so plainly instead of approximating and dressing it up.</li>
-  <li><b>Nothing phones home.</b> Market data comes in; nothing about you goes out. The one network call Alpharch makes for itself is a once-a-day check for updates.</li>
+  <li><b>No fake data.</b> Live futures depth (CME) and equity options flow (OPRA) need licensed data and a working adapter. These integrations are not released. <a href="/connections/">Read the connection guides</a> before arranging provider access.</li>
+  <li><b>Your files remain yours.</b> Journals and layouts are stored locally. Market-data tools connect to their providers and Alpharch checks for updates. If you explicitly invoke Desk Brain, your configured Claude CLI sends the supplied analysis to its model provider; it is not offline inference.</li>
 </ol>
 
 </div><!-- /page -->
