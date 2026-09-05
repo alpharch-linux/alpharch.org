@@ -991,41 +991,49 @@
     "slug": "kraken",
     "name": "Kraken",
     "category": "Crypto exchanges",
-    "route": "Public spot / separate futures API",
+    "route": "Public USD spot / separate account API",
     "linux": "Cross-platform market-data API",
-    "status": "planned",
-    "summary": "Kraken documents public and authenticated spot WebSocket endpoints. Its futures API is separate, so a spot connection must not be presented as futures coverage.",
+    "status": "development",
+    "summary": "Kraken BTC, ETH and SOL USD spot feeds passed live checks in Alpharch’s development desk on September 5, 2026. Kraken’s futures API is separate and is not implemented in this desk.",
     "needs": [
-      "A supported Alpharch adapter for this exchange and product.",
-      "Regional availability and the provider’s current data-use conditions."
+      "The development chart desk with Kraken support. The public installer is a separate release.",
+      "Access to Kraken’s public market-data service from your location. No account login is needed for these charts."
     ],
     "steps": [
       [
-        "Choose the exact market",
-        "Keep spot, perpetuals and dated futures distinct. The same ticker can represent different instruments."
+        "Open Connections in the development desk",
+        "Choose Kraken, then BTC, ETH or SOL. New Chart and Markets also offer the Kraken source."
       ],
       [
-        "Use public data when supported",
-        "Public market-data channels do not require linking a trading account. Private account features use a separate authorization path."
+        "Choose your chart",
+        "The adapter supplies actual trades, a price-level book and historical candles. Check that the chart is labeled Kraken and USD spot."
       ],
       [
-        "Check Alpharch availability",
-        "This exchange has not been integrated into Alpharch. The documented API is a development route, not a working connection in the current release."
+        "Check the received data",
+        "The live check confirmed 100 book levels per side and 720 completed one-minute historical candles for each tested market. Captured order-flow history begins at connection; candles do not supply historical aggressor classification."
+      ],
+      [
+        "Keep account access separate",
+        "The optional Kraken account adapter is read-only development code tested for protocol/error handling. It has not been accepted with a real account and is not a released broker connection."
       ]
     ],
     "trouble": [
       [
-        "Price differs from another venue",
-        "Check the exchange, product, quote currency and contract. Do not substitute another exchange’s price."
+        "Kraken is missing from New Chart",
+        "Your installed version may predate the development desk. This guide does not mean that the public installer has already shipped it."
       ],
       [
-        "Connection unavailable in your region",
-        "Use a provider available to you. Do not bypass regional access restrictions."
+        "Expecting Kraken futures or derivatives",
+        "This adapter covers USD spot. It does not connect Kraken Futures or transfer a derivatives subscription."
+      ],
+      [
+        "The book becomes unavailable",
+        "A failed book-integrity check or stale connection must recover before the chart is treated as current. Do not substitute another venue’s book."
       ]
     ],
     "sources": [
       [
-        "Kraken official API documentation",
+        "Kraken public and private WebSocket services",
         "https://docs.kraken.com/exchange/guides/websockets/introduction"
       ]
     ],
