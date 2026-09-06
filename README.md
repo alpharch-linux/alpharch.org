@@ -7,6 +7,7 @@ Source for [alpharch.org](https://alpharch.org), served by GitHub Pages from `ma
 - `theme.css`: shared white, ink and brass website palette and typography.
 - `site.css`, `site.js`: page presentation, screenshot selection and install-command copying.
 - `images/`: actual application captures, plus the explicitly decorative After Hours wallpaper. Chart screenshots contain no generated or illustrative market data.
+- `videos/alpharch-hyprland-desktop-v2.mp4`: the 47-second Hyprland desktop film, featured at `/#film`. H.264/AAC, 1920 × 1080, with the logo intro, original music and edited loading transitions. The poster is a frame from the real source recording. Playback is user-initiated, with native controls, inline mobile playback, a download link and a text description. No video data is preloaded before playback.
 - `connections/`: searchable directory and individual provider guides.
 - `install`: public bootstrap. Documentation changes do not release application worktree changes.
 

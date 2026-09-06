@@ -5,7 +5,7 @@
 <title>Alpharch — Futures &amp; crypto on Linux</title>
 <meta name="description" content="A free Omarchy Linux workspace for futures and crypto traders. Explore charting, order flow, replay, the ES/NQ roadmap and an optional paid Desk Brain assistant in planning.">
 <link rel="canonical" href="https://alpharch.org/"><link rel="icon" href="/alpharch-favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20260906-wallpaper-fit"><script src="/site.js" defer></script>
+<link rel="stylesheet" href="/site.css?v=20260906-film"><script src="/site.js?v=20260906-film" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -13,7 +13,22 @@
 <main id="main">
 <section class="hero" aria-labelledby="headline">
 <div class="edition"><span>FUTURES &amp; CRYPTO / OMARCHY</span><a href="#build-status">Live desk preview · 1.8.0-alpha.1 ↘</a></div>
-<div class="hero-copy"><h1 id="headline">Futures &amp; crypto.<br>At home on <em>Linux.</em></h1><div class="hero-note"><p>Built around the intraday session: price, liquidity and the tape. ES and NQ are central to the futures roadmap, alongside Bitcoin and crypto.</p><p class="quiet">Alpharch is a free, open-source trading overlay for Omarchy. Make the workspace yours, with an optional paid AI assistant planned for traders who want it.</p><a class="text-link" href="#desk">Take a look inside <span>↓</span></a></div></div>
+<div class="hero-copy"><h1 id="headline">Futures &amp; crypto.<br>At home on <em>Linux.</em></h1><div class="hero-note"><p>Built around the intraday session: price, liquidity and the tape. ES and NQ are central to the futures roadmap, alongside Bitcoin and crypto.</p><p class="quiet">Alpharch is a free, open-source trading overlay for Omarchy. Make the workspace yours, with an optional paid AI assistant planned for traders who want it.</p><a class="text-link" href="#film">Watch it in action <span aria-hidden="true">↓</span></a></div></div>
+</section>
+<section class="desk-film" id="film" aria-labelledby="film-title">
+<div class="film-heading"><div><span class="section-label">ALPHARCH / ON FILM</span><h2 id="film-title">Watch the desk unfold.</h2></div><p>Start with an empty desktop. Open your Hyprland desk. Make room for the charts you trade.</p></div>
+<figure class="film-figure">
+<div class="film-stage">
+<video id="deskFilm" controls playsinline preload="none" poster="/images/hyprland-film-poster.jpg" width="1920" height="1080" aria-label="Alpharch Hyprland desktop demonstration" aria-describedby="film-caption film-description">
+<source src="/videos/alpharch-hyprland-desktop-v2.mp4" type="video/mp4">
+Your browser cannot play this video. <a href="/videos/alpharch-hyprland-desktop-v2.mp4">Download the desktop demo.</a>
+</video>
+<button class="film-play" id="playFilm" type="button" hidden aria-label="Play the 47-second Alpharch desktop film with sound" aria-controls="deskFilm"><span class="film-play-icon" aria-hidden="true">▶</span><span>Play the film<small>47 seconds · sound on</small></span></button>
+</div>
+<figcaption id="film-caption"><span>Real desktop footage. Hyprland tiling, chart tools and live Coinbase BTC/USD at the time of recording.</span><a href="/videos/alpharch-hyprland-desktop-v2.mp4" download="Alpharch-Hyprland-Desktop.mp4">Download film <span aria-hidden="true">↓</span></a></figcaption>
+</figure>
+<p id="film-status" class="film-status" role="status" hidden></p>
+<details class="film-description"><summary>What’s in the film</summary><p id="film-description">The Alpharch logo opens the film, followed by an empty Omarchy desktop. The Hyprland template opens separate tiled chart windows. The demo resizes and focuses windows, changes timeframes, draws a price level, zooms in, adds RSI, shows liquidity and the tape, and opens a 40-range chart. Recorded in the development build; loading intervals are shortened. Instrumental music, no narration. This is a charting demonstration; it does not show broker order execution.</p></details>
 </section>
 <section class="desk-gallery" id="desk" aria-label="Actual Alpharch screenshots">
 <div class="gallery-top"><span class="section-label">ON THE DESK</span><div class="gallery-buttons" role="group" aria-label="Choose a screenshot"><button data-shot="desk" aria-pressed="true">The workspace</button><button data-shot="studies" aria-pressed="false">Studies</button><button data-shot="bitcoin" aria-pressed="false">Bitcoin starter</button></div></div>
