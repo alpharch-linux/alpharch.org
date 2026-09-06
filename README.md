@@ -3,7 +3,7 @@
 Source for [alpharch.org](https://alpharch.org), served by GitHub Pages from `main` at the repository root. Alpharch is an additive trading overlay for Omarchy Linux. Application development lives in [alpharch-linux/alpharch](https://github.com/alpharch-linux/alpharch).
 
 - `index.html`: front page with real development-desk screenshots, starting layouts and explicit release status.
-- `start.html`: public-tools manual plus labeled development-desk instructions.
+- `start.html`: public-preview manual, including the installed live desk.
 - `theme.css`: shared white, ink and brass website palette and typography.
 - `site.css`, `site.js`: page presentation, screenshot selection and install-command copying.
 - `images/`: actual development-build captures; no generated or illustrative market charts.
@@ -26,7 +26,7 @@ Each guide records its review date, official sources, account route, Linux feasi
 
 IBKR supplies native Linux TWS and IB Gateway. Cross-platform web protocols elsewhere are integration possibilities, not claims of native desktop support or completed Omarchy acceptance testing.
 
-The existing public tools include Coinbase spot, Hyperliquid perpetual data, Deribit options, and legacy Binance parsers subject to regional access. The redesigned chart desk and Databento CSV importer are separate development work. No live broker adapter is advertised as released.
+The existing public tools include Coinbase spot, Hyperliquid perpetual data, Deribit options, and legacy Binance parsers subject to regional access. The 1.8.0-alpha.1 public preview adds the redesigned chart desk, Kraken public spot and the futures CSV importer. The included IBKR bridge remains experimental and requires account acceptance; no broker execution is supported.
 
 The website collects no credentials. Keep passwords, keys, account identifiers and private research out of pages and source data. Link to current official terms for fees and eligibility.
 
@@ -42,9 +42,9 @@ Open `http://127.0.0.1:17864/connections/`. Production retains GitHub Pages and 
 
 Refreshed September 6, 2026 against the working application and existing command implementations. `desk.png` and `studies.png` are the September 5 real-data captures from the development desk; `bitcoin-desk.jpg` and `starting-desks.jpg` were captured September 6 through the browser at its actual visible width. The gallery captions identify dates and the fact these are static public-market captures. Original screenshot bytes are retained.
 
-The public installer does not yet ship the redesigned chart desk. Keep that distinction beside screenshots and installation instructions until the application release actually changes. The existing Daily (`trade-brief`) is an on-demand morning brief; automatic scheduling, a full overnight futures report and dealer positioning are not implemented by it.
+The public installer ships the redesigned chart desk in 1.8.0-alpha.1. Keep its preview status and the separate futures/account acceptance limits beside installation instructions. App release: https://github.com/alpharch-linux/alpharch/releases/tag/v1.8.0-alpha.1. The existing Daily (`trade-brief`) is an on-demand morning brief; automatic scheduling, a full overnight futures report and dealer positioning are not implemented by it.
 
-Run `python3 _tools/check_site.py`, `python3 _tools/check_connections.py`, and `node --check site.js` before publication. Update screenshot alt text, dimensions, caption and full-size links together when replacing a capture.
+Run `python3 _tools/check_bootstrap.py`, `python3 _tools/check_site.py`, `python3 _tools/check_connections.py`, and `node --check site.js` before publication. Update screenshot alt text, dimensions, caption and full-size links together when replacing a capture.
 
 The website uses a light editorial theme across the home page, manual and connection guides. Actual chart screenshots retain the application’s own colors. The existing light-surface logo variant is used in all headers. Keep foreground/background pairs consistent with `theme.css` when extending a page.
 

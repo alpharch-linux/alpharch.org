@@ -6,12 +6,12 @@
     "route": "TWS / IB Gateway",
     "linux": "Native Linux software",
     "status": "account-test",
-    "summary": "IBKR supplies Linux builds of TWS and IB Gateway. Alpharch’s development desk now includes a read-only futures bridge, contract selection and charts. Offline checks pass; a real gateway, account and CME data connection have not yet been acceptance-tested.",
+    "summary": "IBKR supplies Linux builds of TWS and IB Gateway. Alpharch’s 1.8.0-alpha.1 preview includes an experimental read-only futures bridge, contract selection and charts. Offline checks pass; a real gateway, account and CME data connection have not yet been acceptance-tested.",
     "needs": [
       "An IBKR account and its required market-data subscriptions.",
       "The Linux TWS or IB Gateway application, signed in locally.",
       "The official TWS API Python client installed in the same runtime as Alpharch. This is optional for public crypto tools.",
-      "The development desk with the IBKR bridge. This guide is not a claim that the public installer includes a supported broker connection."
+      "Alpharch 1.8.0-alpha.1 or newer, which includes the experimental bridge. Account acceptance is still pending; inclusion is not a claim of a supported broker connection."
     ],
     "steps": [
       [
@@ -24,10 +24,10 @@
       ],
       [
         "Install the optional official API client",
-        "Use the TWS API download and IBKR’s Python installation instructions linked below. Follow the downloaded version’s dependency requirements. The development desk shows Setup required when the client is missing."
+        "Use the TWS API download and IBKR’s Python installation instructions linked below. Follow the downloaded version’s dependency requirements. The live desk shows Setup required when the client is missing."
       ],
       [
-        "Connect the development desk",
+        "Connect the preview desk",
         "Open Connect, choose Interactive Brokers, and enter the local API port and a unique nonzero client ID. Sign-in stays in TWS or IB Gateway; Alpharch does not ask for your broker password. A port number alone does not verify paper or live account mode."
       ],
       [
@@ -851,8 +851,8 @@
         "Use the flow, depth, heatmap, tape or profile views. No Coinbase password or API key is needed for this public feed."
       ],
       [
-        "Try the development desk when available",
-        "The new chart desk supports Coinbase BTC, ETH and SOL against USD. It is a development build; do not assume the public installer already includes it."
+        "Open the live desk",
+        "Run trade-workspace or open Alpharch Live Desk. Version 1.8.0-alpha.1 includes Coinbase BTC, ETH and SOL against USD; the Bitcoin starting desk is ready to customize."
       ]
     ],
     "trouble": [
@@ -897,8 +897,8 @@
         "Check the venue and perpetual label before comparing prices. Book history begins when the connection starts."
       ],
       [
-        "Use the development chart desk when available",
-        "BTC, ETH and SOL perpetuals are available in the development desk. Public data requires no wallet secret or transaction signature."
+        "Open the live desk",
+        "Version 1.8.0-alpha.1 includes BTC, ETH and SOL perpetuals in the live desk. Public data requires no wallet secret or transaction signature."
       ]
     ],
     "trouble": [
@@ -1019,15 +1019,15 @@
     "category": "Crypto exchanges",
     "route": "Public USD spot / separate account API",
     "linux": "Cross-platform market-data API",
-    "status": "development",
-    "summary": "Kraken BTC, ETH and SOL USD spot feeds passed live checks in Alpharch’s development desk on September 5, 2026. Kraken’s futures API is separate and is not implemented in this desk.",
+    "status": "existing",
+    "summary": "Kraken BTC, ETH and SOL USD spot feeds passed live checks in the installed 1.8.0-alpha.1 preview on September 6, 2026. Kraken’s futures API is separate and is not implemented in this desk.",
     "needs": [
-      "The development chart desk with Kraken support. The public installer is a separate release.",
+      "Alpharch 1.8.0-alpha.1 or newer; the public installer includes Kraken spot in the live desk.",
       "Access to Kraken’s public market-data service from your location. No account login is needed for these charts."
     ],
     "steps": [
       [
-        "Open Connections in the development desk",
+        "Open Connections in the live desk",
         "Choose Kraken, then BTC, ETH or SOL. New Chart and Markets also offer the Kraken source."
       ],
       [
@@ -1046,7 +1046,7 @@
     "trouble": [
       [
         "Kraken is missing from New Chart",
-        "Your installed version may predate the development desk. This guide does not mean that the public installer has already shipped it."
+        "Run alpharch version. If it predates 1.8.0-alpha.1, run alpharch update, then open Alpharch Live Desk or trade-workspace."
       ],
       [
         "Expecting Kraken futures or derivatives",
@@ -1442,10 +1442,10 @@
     "route": "Licensed live / historical data",
     "linux": "Cross-platform client libraries",
     "status": "access",
-    "summary": "Databento supplies live and historical market data through documented APIs. Alpharch’s development build has a CSV import path; that is not a live Databento connection.",
+    "summary": "Databento supplies live and historical market data through documented APIs. Alpharch 1.8.0-alpha.1 includes a futures CSV importer; file import does not establish a live Databento connection.",
     "needs": [
       "Databento account access and the dataset/schema permissions needed for your market.",
-      "A released live adapter, or supported files for the development importer."
+      "Supported CSV files for the included alpha-import-futures command. A live adapter is not available."
     ],
     "steps": [
       [
@@ -1458,7 +1458,7 @@
       ],
       [
         "Check Alpharch release support",
-        "The live adapter is not released. Development import support is documented with the application and should not be assumed present in the public installer."
+        "The live adapter is not released. The public preview includes alpha-import-futures; read its help for the supported CSV schema and required contract/tick metadata."
       ]
     ],
     "trouble": [
