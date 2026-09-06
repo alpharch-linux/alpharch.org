@@ -47,3 +47,5 @@ The public installer does not yet ship the redesigned chart desk. Keep that dist
 Run `python3 _tools/check_site.py`, `python3 _tools/check_connections.py`, and `node --check site.js` before publication. Update screenshot alt text, dimensions, caption and full-size links together when replacing a capture.
 
 The website uses a light editorial theme across the home page, manual and connection guides. Actual chart screenshots retain the application’s own colors. The existing light-surface logo variant is used in all headers. Keep foreground/background pairs consistent with `theme.css` when extending a page.
+
+Futures and crypto are both core product audiences. Keep ES/NQ visible while stating IBKR gateway acceptance and other provider adapter work accurately. Crypto screenshots document working public feeds; they do not narrow the product roadmap. The planned hosted Desk Brain subscription is an optional paid service. Do not advertise subscriptions, checkout or a price as available until they actually launch; current local features and the user-owned Claude CLI path remain available.
