@@ -160,14 +160,14 @@ h1{font-size:59px}
 @media(max-width:950px){.market-section,.assistant-section{gap:45px}}
 @media(max-width:700px){.market-section,.assistant-section{grid-template-columns:1fr;gap:35px;padding-block:50px}}
 
-/* After Hours: a full-width view of the actual bundled wallpaper. */
-.wallpaper-feature{padding-block:70px;border-top:1px solid var(--line);scroll-margin-top:30px}
+/* Keep the complete wallpaper comfortable in short or narrow browser windows. */
+.wallpaper-feature{max-width:60rem;margin-inline:auto;padding-block:50px;border-top:1px solid var(--line);scroll-margin-top:30px}
 .wallpaper-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:28px}
 .wallpaper-heading .section-label{display:block;margin-bottom:18px}
 .wallpaper-heading p{max-width:29ch;color:var(--muted)}
-.wallpaper-feature figure{margin:0}
+.wallpaper-feature figure{width:100%;max-width:min(60rem,100vh);max-width:min(60rem,100svh);margin:0 auto;min-width:0}
 .wallpaper-feature figure>a{display:block;background:#08181c}
-.wallpaper-feature img{display:block;width:100%;height:auto}
-.wallpaper-feature figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-top:18px;font-size:14px;color:var(--muted)}
-.wallpaper-feature .text-link{white-space:nowrap}
+.wallpaper-feature img{display:block;width:100%;max-width:100%;height:auto}
+.wallpaper-feature figcaption{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 20px;padding-top:18px;font-size:14px;color:var(--muted)}
+.wallpaper-feature .text-link{max-width:100%;gap:16px}
 @media(max-width:700px){.wallpaper-feature{padding-block:45px}.wallpaper-heading{display:block}.wallpaper-heading p{margin-top:20px;max-width:none}.wallpaper-feature figcaption{flex-direction:column;gap:12px}}
