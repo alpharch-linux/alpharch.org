@@ -6,7 +6,7 @@ Source for [alpharch.org](https://alpharch.org), served by GitHub Pages from `ma
 - `start.html`: public-preview manual, including the installed live desk.
 - `theme.css`: shared white, ink and brass website palette and typography.
 - `site.css`, `site.js`: page presentation, screenshot selection and install-command copying.
-- `images/`: actual development-build captures; no generated or illustrative market charts.
+- `images/`: actual application captures, plus the explicitly decorative After Hours wallpaper. Chart screenshots contain no generated or illustrative market data.
 - `connections/`: searchable directory and individual provider guides.
 - `install`: public bootstrap. Documentation changes do not release application worktree changes.
 
@@ -49,3 +49,5 @@ Run `python3 _tools/check_bootstrap.py`, `python3 _tools/check_site.py`, `python
 The website uses a light editorial theme across the home page, manual and connection guides. Actual chart screenshots retain the application’s own colors. The existing light-surface logo variant is used in all headers. Keep foreground/background pairs consistent with `theme.css` when extending a page.
 
 Futures and crypto are both core product audiences. Keep ES/NQ visible while stating IBKR gateway acceptance and other provider adapter work accurately. Crypto screenshots document working public feeds; they do not narrow the product roadmap. The planned hosted Desk Brain subscription is an optional paid service. Do not advertise subscriptions, checkout or a price as available until they actually launch; current local features and the user-owned Claude CLI path remain available.
+
+After Hours is the bundled Alpharch desktop wallpaper, shown in its own home-page section with a PNG download. It is generated brand artwork based on the existing logo, separate from the real-data chart screenshots. Its original 1672 × 941 PNG is displayed without cropping; keep those dimensions and the download link aligned when replacing it.
