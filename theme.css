@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Shared website palette. The trading workspace has its own theme. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --ink: #17232a;
+  --muted: #50616a;
+  --line: #d4dcdf;
+  --panel: #f1f4f5;
+  --amber: #875a16;
+  --brand-accent: #e7b454;
+  --mint: #256256;
+  --violet: #635087;
+  --sans: 'Libre Franklin', system-ui, sans-serif;
+  --serif: 'Newsreader', Georgia, serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}

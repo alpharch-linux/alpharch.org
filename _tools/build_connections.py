@@ -25,7 +25,7 @@ def shell(title, description, path, body):
 <link rel="canonical" href="https://alpharch.org{path}"><link rel="icon" href="/alpharch-favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/connections/style.css"><script src="/connections/guides.js" defer></script>
 </head><body><a class="skip" href="#main">Skip to content</a>
-<header class="mast"><a class="brand" href="/" aria-label="Alpharch home"><img src="/alpharch-mark-dark.svg" width="38" height="38" alt="">ALPHARCH<span>.</span></a>
+<header class="mast"><a class="brand" href="/" aria-label="Alpharch home"><img src="/alpharch-mark-light.svg" width="38" height="38" alt="">ALPHARCH<span>.</span></a>
 <nav aria-label="Main"><a href="/start.html">The manual</a><a href="/connections/" aria-current="{'page' if path == '/connections/' else 'false'}">Connections</a><a href="https://github.com/alpharch-linux/alpharch">Source ↗</a></nav></header>
 {body}
 <footer><a class="brand" href="/">ALPHARCH<span>.</span></a><p>The trading layer for Omarchy Linux.</p><p>Provider facts reviewed <time datetime="{REVIEWED}">September 5, 2026</time>.<br>Software support is stated separately from provider capability. Provider names do not imply partnership or certification.</p><a href="/connections/">All connection guides ↑</a></footer>

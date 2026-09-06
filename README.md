@@ -4,7 +4,8 @@ Source for [alpharch.org](https://alpharch.org), served by GitHub Pages from `ma
 
 - `index.html`: front page with real development-desk screenshots, starting layouts and explicit release status.
 - `start.html`: public-tools manual plus labeled development-desk instructions.
-- `site.css`, `site.js`: shared presentation, screenshot selection and install-command copying.
+- `theme.css`: shared white, ink and brass website palette and typography.
+- `site.css`, `site.js`: page presentation, screenshot selection and install-command copying.
 - `images/`: actual development-build captures; no generated or illustrative market charts.
 - `connections/`: searchable directory and individual provider guides.
 - `install`: public bootstrap. Documentation changes do not release application worktree changes.
@@ -44,3 +45,5 @@ Refreshed September 6, 2026 against the working application and existing command
 The public installer does not yet ship the redesigned chart desk. Keep that distinction beside screenshots and installation instructions until the application release actually changes. The existing Daily (`trade-brief`) is an on-demand morning brief; automatic scheduling, a full overnight futures report and dealer positioning are not implemented by it.
 
 Run `python3 _tools/check_site.py`, `python3 _tools/check_connections.py`, and `node --check site.js` before publication. Update screenshot alt text, dimensions, caption and full-size links together when replacing a capture.
+
+The website uses a light editorial theme across the home page, manual and connection guides. Actual chart screenshots retain the application’s own colors. The existing light-surface logo variant is used in all headers. Keep foreground/background pairs consistent with `theme.css` when extending a page.
