@@ -41,7 +41,11 @@ Open `http://127.0.0.1:17864/connections/`. Production retains GitHub Pages and 
 
 ## Screenshot provenance and copy review
 
-Refreshed September 6, 2026 against the working application and existing command implementations. `desk.png` and `studies.png` are the September 5 real-data captures from the development desk; `bitcoin-desk.jpg` and `starting-desks.jpg` were captured September 6 through the browser at its actual visible width. The gallery captions identify dates and the fact these are static public-market captures. Original screenshot bytes are retained.
+Refreshed September 7, 2026. The home page leads with the Hyprland edition and makes Omarchy the explicit platform in the headline, metadata, foundation note and installation path. Classic remains an option, not the lead gallery.
+
+`hyprland-desk.jpg`, `hyprland-chart-focus.jpg` and `hyprland-order-flow.jpg` are unaltered frames at 16.9, 28.8 and 37.8 seconds from the September 6 real desktop source recording (`work/marketing-video/desktop-take.mp4` in the authoring workspace). They show actual Coinbase BTC/USD data in native Hyprland windows, without marketing captions or invented prices. `hyprland-starting-desks.png` captures the September 7 installed chooser with Hyprland selected. Screenshot dates, dimensions, alt text and full-size links match the assets. Older Classic captures remain available at their existing URLs for compatibility.
+
+The manual now describes the main chooser on every launch, native shortcuts and saved desks, plus the distinction between per-window Hyprland replay and shared-clock Classic replay. The current installer follows public main and includes changes newer than the initial 1.8.0-alpha.1 tag; do not imply that the original tagged release includes all later Hyprland changes.
 
 The public installer ships the redesigned chart desk in 1.8.0-alpha.1. Keep its preview status and the separate futures/account acceptance limits beside installation instructions. App release: https://github.com/alpharch-linux/alpharch/releases/tag/v1.8.0-alpha.1. The existing Daily (`trade-brief`) is an on-demand morning brief; automatic scheduling, a full overnight futures report and dealer positioning are not implemented by it.
 

@@ -23,9 +23,9 @@ if(film&&playFilm){
  playFilm.hidden=false;
 }
 const shots={
- desk:{src:'/images/desk.png',alt:'Alpharch with a Bitcoin liquidity heatmap, an Ethereum candle chart and a Bitcoin perpetual volume profile in resizable tiles.',caption:'The workspace · heatmap, candles and volume profile · captured September 5, 2026.',width:1440,height:900},
- studies:{src:'/images/studies.png',alt:'An Ethereum chart with Bollinger Bands and separate volume and stochastic indicator panes.',caption:'Studies · Bollinger Bands, volume and stochastic · captured September 5, 2026.',width:1440,height:900},
- bitcoin:{src:'/images/bitcoin-desk.jpg',alt:'The Bitcoin starting desk with a one-minute chart on the left and liquidity heatmap and time and sales on the right.',caption:'Bitcoin starter · one market, three views · captured September 6, 2026.',width:734,height:720}
+ desk:{src:'/images/hyprland-desk.jpg',alt:'Three Alpharch chart windows tiled by Hyprland on Omarchy: Bitcoin candles and time and sales on the left, a liquidity heatmap on the right, with the desktop bar and wallpaper visible.',caption:'Hyprland desk · three real chart windows on Omarchy · captured September 6, 2026.',width:1920,height:1080},
+ focus:{src:'/images/hyprland-chart-focus.jpg',alt:'A focused Alpharch Bitcoin chart with the left drawing toolbar, a marked horizontal price level, exact prices and volume below.',caption:'Chart focus · draw a level and zoom into price · captured September 6, 2026.',width:1920,height:1080},
+ flow:{src:'/images/hyprland-order-flow.jpg',alt:'The Omarchy Hyprland desk with a Bitcoin chart and RSI, time and sales, and a liquidity heatmap with trade bubbles in separate native windows.',caption:'Order flow · RSI, liquidity, trade bubbles and the tape · captured September 6, 2026.',width:1920,height:1080}
 };
 for(const button of document.querySelectorAll('[data-shot]'))button.addEventListener('click',()=>{
  const shot=shots[button.dataset.shot];if(!shot)return;

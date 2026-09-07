@@ -195,3 +195,11 @@ h1{font-size:59px}
 .wallpaper-feature figcaption{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 20px;padding-top:18px;font-size:14px;color:var(--muted)}
 .wallpaper-feature .text-link{max-width:100%;gap:16px}
 @media(max-width:700px){.wallpaper-feature{padding-block:45px}.wallpaper-heading{display:block}.wallpaper-heading p{margin-top:20px;max-width:none}.wallpaper-feature figcaption{flex-direction:column;gap:12px}}
+
+/* Omarchy is the foundation of the desk, visible before the first chart. */
+.omarchy-foundation{display:grid;grid-template-columns:165px minmax(0,1fr) auto;gap:24px;align-items:baseline;border-top:1px solid var(--line);padding:20px 0 28px;font-size:14px;line-height:1.7}
+.omarchy-foundation p{max-width:78ch;color:var(--muted)}
+.omarchy-foundation a{white-space:nowrap;color:var(--amber)}
+.desk-gallery+.desk-film{margin-top:44px}
+@media(max-width:950px){.omarchy-foundation{grid-template-columns:1fr auto}.omarchy-foundation .section-label{grid-column:1/-1}.omarchy-foundation{gap:12px 24px}}
+@media(max-width:700px){.omarchy-foundation{grid-template-columns:1fr}.omarchy-foundation a{justify-self:start}.desk-gallery+.desk-film{margin-top:30px}}
